@@ -86,7 +86,6 @@ class LoginViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
 
-//        print("{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}")
         let session = URLSession.shared
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -96,7 +95,6 @@ class LoginViewController: UIViewController {
             func displayError(_ error: String) {
                 //print(error)
                 let nextController = UIAlertController()
-//                let okAction = UIAlertAction(title: "Login Failed", message: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
                 let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
                 
                 nextController.addAction(okAction)
@@ -112,8 +110,6 @@ class LoginViewController: UIViewController {
                 displayError("There was an error with your request: \(error)")
                 return
             }
-            
-//            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
             
             // Strip off 1st 5 characters in data
             let newData = (data! as NSData).subdata(with: NSMakeRange(5, (data?.count)! - 5))
@@ -133,7 +129,6 @@ class LoginViewController: UIViewController {
             /* GUARD: First, is there a session in our result? */
             guard let sessionData = parsedResult["session"] as? NSDictionary
                 else {
-                    // displayError("Cannot find key 'session' in \(parsedResult!)")
                     displayError("Login Failed:  invalid username/password")
                     return
             }

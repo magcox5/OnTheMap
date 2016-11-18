@@ -21,39 +21,23 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P5u-Da-ath">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapPin" translatesAutoresizingMaskIntoConstraints="NO" id="eAv-Rf-fb9">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="uku-nH-uzp"/>
-                                        </constraints>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapPin" translatesAutoresizingMaskIntoConstraints="NO" id="eAv-Rf-fb9"/>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="On The Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoe-2i-Uw6">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="xjx-19-nJA"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username (email)" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWp-f9-nTr" userLabel="username">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Ktd-Qy-FAC"/>
-                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-AE-Sr9" userLabel="password">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="50C-lP-Rj9"/>
-                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKL-wr-LAm">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="W3q-eJ-sX1"/>
-                                        </constraints>
                                         <state key="normal" title="Login to Udacity">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -118,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="xxG-F7-M2U" userLabel="Table"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="xxG-F7-M2U" userLabel="Table"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWJ-as-LxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,13 +121,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hBm-DZ-8bc">
-                                <frame key="frameInset" minX="16" minY="64" width="359" height="554"/>
+                                <frame key="frameInset" minY="72" width="359" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="iCb-Qi-3fs"/>
+                    <tabBarItem key="tabBarItem" selectedImage="mapPin" systemItem="more" id="iCb-Qi-3fs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DYx-jM-4bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,8 +152,94 @@
             </objects>
             <point key="canvasLocation" x="-250" y="-3180"/>
         </scene>
+        <!--Login 2-->
+        <scene sceneID="w4c-rc-oYr">
+            <objects>
+                <viewController id="fdm-ED-kZF" userLabel="Login 2" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Pv-zs-RFj"/>
+                        <viewControllerLayoutGuide type="bottom" id="nLK-c1-Npx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YEY-TW-XQe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-Lh-JWu">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapPin" translatesAutoresizingMaskIntoConstraints="NO" id="lwE-Rl-2Px">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="oL9-GW-8NH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="On The Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1B-hC-SbS">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LIY-G5-kua"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username (email)" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jab-jW-Bk1" userLabel="username">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="W7X-ci-R1X"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-Rp-l0I" userLabel="password">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7iw-f2-DoO"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-iO-i3i">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="r3X-qv-cCF"/>
+                                        </constraints>
+                                        <state key="normal" title="Login to Udacity">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="fdm-ED-kZF" eventType="touchUpInside" id="mNi-Bc-B27"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nN-w3-OUI">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Ckd-Lh-JWu" firstAttribute="top" secondItem="0Pv-zs-RFj" secondAttribute="bottom" constant="35" id="CE2-Ca-5cU"/>
+                            <constraint firstItem="Ckd-Lh-JWu" firstAttribute="leading" secondItem="YEY-TW-XQe" secondAttribute="leadingMargin" id="Wfq-3r-6N7"/>
+                            <constraint firstItem="Ckd-Lh-JWu" firstAttribute="trailing" secondItem="YEY-TW-XQe" secondAttribute="trailingMargin" id="YU8-Gz-qIs"/>
+                            <constraint firstItem="nLK-c1-Npx" firstAttribute="top" secondItem="Ckd-Lh-JWu" secondAttribute="bottom" constant="18" id="hYC-2j-sBF"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Pc2-lj-dmi" appends="YES" id="pq8-Ut-1Ur"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="debugLabel" destination="6nN-w3-OUI" id="ZCi-BB-WGZ"/>
+                        <outlet property="loginButton" destination="oqo-iO-i3i" id="o35-nN-oka"/>
+                        <outlet property="passwordTextField" destination="fNw-Rp-l0I" id="wuh-Sl-Vte"/>
+                        <outlet property="usernameTextField" destination="jab-jW-Bk1" id="rQD-A9-mYS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKw-FT-wBx" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Pc2-lj-dmi"/>
+            </objects>
+            <point key="canvasLocation" x="-1655" y="-2501"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="mapPin" width="256" height="256"/>
+        <image name="mapPin" width="25" height="25"/>
     </resources>
 </document>
