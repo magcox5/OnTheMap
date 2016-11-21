@@ -18,6 +18,7 @@
 		DA46F7D91DC1B2B000B8CEC8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */; };
 		DA8794581DC2BE7300D0B8FB /* UdacityStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8794571DC2BE7300D0B8FB /* UdacityStudent.swift */; };
 		DABB6DE01DCBB0580046FCF9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */; };
+		DAD85E431DDF746B001FE719 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD85E421DDF746B001FE719 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DA8794571DC2BE7300D0B8FB /* UdacityStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudent.swift; sourceTree = "<group>"; };
 		DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		DAD85E421DDF746B001FE719 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD85E431DDF746B001FE719 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +55,7 @@
 			children = (
 				DA399D661DB715B5009355AA /* OnTheMap */,
 				DA399D651DB715B5009355AA /* Products */,
+				DAD85E411DDF746A001FE719 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +150,14 @@
 			name = Facebook;
 			sourceTree = "<group>";
 		};
+		DAD85E411DDF746A001FE719 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAD85E421DDF746B001FE719 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,7 +185,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Molly Cox";
 				TargetAttributes = {
 					DA399D631DB715B5009355AA = {
@@ -270,6 +282,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -319,6 +332,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -349,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BHY3MQVSKT;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MagCoxSW.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -362,6 +377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BHY3MQVSKT;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MagCoxSW.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
