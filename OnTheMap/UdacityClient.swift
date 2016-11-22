@@ -20,9 +20,7 @@ class UdacityClient : NSObject {
     // var config = OTMConfig()
     
     // authentication state
-    var requestToken: String? = nil
     var sessionID : String? = nil
-    var userID : Int? = nil
     
     // MARK: Initializers
     

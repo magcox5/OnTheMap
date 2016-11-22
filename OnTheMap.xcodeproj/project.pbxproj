@@ -16,6 +16,7 @@
 		DA399D7C1DB71AE4009355AA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D7B1DB71AE4009355AA /* UdacityClient.swift */; };
 		DA399D821DB71DA4009355AA /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D811DB71DA4009355AA /* GCDBlackBox.swift */; };
 		DA46F7D91DC1B2B000B8CEC8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */; };
+		DA7F49341DE2A44700BBD760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F49331DE2A44700BBD760 /* MapViewController.swift */; };
 		DA8794581DC2BE7300D0B8FB /* UdacityStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8794571DC2BE7300D0B8FB /* UdacityStudent.swift */; };
 		DABB6DE01DCBB0580046FCF9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */; };
 		DAD85E431DDF746B001FE719 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD85E421DDF746B001FE719 /* MapKit.framework */; };
@@ -33,6 +34,7 @@
 		DA399D7B1DB71AE4009355AA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		DA399D811DB71DA4009355AA /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DA7F49331DE2A44700BBD760 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA8794571DC2BE7300D0B8FB /* UdacityStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityStudent.swift; sourceTree = "<group>"; };
 		DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		DAD85E421DDF746B001FE719 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				DA399D691DB715B5009355AA /* LoginViewController.swift */,
+				DA7F49331DE2A44700BBD760 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */,
 				DA399D821DB71DA4009355AA /* GCDBlackBox.swift in Sources */,
 				DABB6DE01DCBB0580046FCF9 /* BorderedButton.swift in Sources */,
+				DA7F49341DE2A44700BBD760 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
