@@ -1,5 +1,5 @@
 //
-//  UdacityStudent.swift
+//  StudentLocation.swift
 //  OnTheMap
 //
 //  Created by Molly Cox on 10/27/16.

@@ -1,5 +1,5 @@
 //
-//  UdacityConstants.swift
+//  Constants.swift
 //  OnTheMap
 //
 //  Created by Molly Cox on 10/18/16.
@@ -12,7 +12,7 @@ import UIKit
 extension UdacityClient {
     
     // MARK: Constants
-    struct UdacityConstants {
+    struct Constants {
         
         // MARK: API Key
         static let ApiKey : String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"

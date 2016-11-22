@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
     {
         /* 1. Set the parameters */
         let methodParameters = [
-            UdacityClient.ParameterKeys.ApiKey: UdacityClient.UdacityConstants.ApiKey
+            UdacityClient.ParameterKeys.ApiKey: UdacityClient.Constants.ApiKey
         ]
         
         /* 2/3. Build the URL, Configure the request */
