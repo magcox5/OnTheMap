@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="703" y="-2853"/>
         </scene>
-        <!--PinMapView-->
+        <!--MapViewController-->
         <scene sceneID="Qq4-6I-efe">
             <objects>
-                <viewController storyboardIdentifier="MapView" id="URL-2I-zMy" userLabel="PinMapView" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" id="URL-2I-zMy" userLabel="MapViewController" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6sg-y0-hTt"/>
                         <viewControllerLayoutGuide type="bottom" id="smK-1a-U0I"/>
