@@ -18,35 +18,35 @@ struct StudentLocation {
     let lastName: String
     let mapString: String
     let mediaURL: String
-    let latitude: Float
-    let longitude: Float
+    let latitude: Double
+    let longitude: Double
     let createdAt: Date
     let updatedAt: Date
     
-    init(dictionary: [String:AnyObject]) {
-        objectID = dictionary["objectID"] as! String
-        uniqueKey = dictionary["uniqueKey"] as! String
-        firstName = dictionary["firstName"] as! String
-        lastName = dictionary["lastName"] as! String
-        mapString = dictionary["mapString"] as! String
-        mediaURL = dictionary["mediaURL"] as! String
-        latitude = dictionary["latitude"] as! Float
-        longitude = dictionary["longitude"] as! Float
-        createdAt = dictionary["createdAt"] as! Date
-        updatedAt = dictionary["updatedAt"] as! Date
+    init(value:[String:AnyObject]) {
+        objectID = (value["objectID"] as? String)!
+        uniqueKey = (value["uniqueKey"] as? String)!
+        firstName = (value["firstName"] as? String)!
+        lastName = (value["lastName"] as? String)!
+        mapString = (value["mapString"] as? String)!
+        mediaURL = (value["mediaURL"] as? String)!
+        latitude = (value["latitude"] as? Double)!
+        longitude = (value["longitude"] as? Double)!
+        createdAt = (value["createdAt"] as? Date)!
+        updatedAt = (value["updatedAt"] as? Date)!
         
     }
     
-    static func studentLocationsFromResults(_ results: [[String:AnyObject]]) -> [StudentLocation] {
+    static func studentLocationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
         
-        var studentLocation = [StudentLocation]()
+        var studentLocations = [StudentLocation]()
         
         // iterate through array of dictionaries, each StudentLocation is a dictionary
         for result in results {
-            studentLocation.append(StudentLocation(dictionary: result))
+            studentLocations.append(StudentLocation(value:result))
         }
         
-        return studentLocation
+        return studentLocations
     }
     
 }

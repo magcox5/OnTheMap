@@ -22,23 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-// MARK: Create URL from Parameters
-
-extension AppDelegate {
-    
-    func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
-        
-        var components = URLComponents()
-        components.scheme = UdacityClient.Constants.ApiScheme
-        components.host = UdacityClient.Constants.ApiHost
-        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
-        components.queryItems = [URLQueryItem]()
-        
-        for (key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.url!
-    }
-}
+//// MARK: Create URL from Parameters
+//
+//extension AppDelegate {
+//    
+//    func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
+//        
+//        var components = URLComponents()
+//        components.scheme = UdacityClient.Constants.ApiScheme
+//        components.host = UdacityClient.Constants.ApiHost
+//        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
+//        components.queryItems = [URLQueryItem]()
+//        
+//        for (key, value) in parameters {
+//            let queryItem = URLQueryItem(name: key, value: "\(value)")
+//            components.queryItems!.append(queryItem)
+//        }
+//        
+//        return components.url!
+//    }
+//}
