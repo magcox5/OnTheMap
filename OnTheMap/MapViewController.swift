@@ -69,9 +69,10 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
             if let pinResults = parsedResult["results"] {
                 print(pinResults!)
                 // Store student locations in data structure
-//                let studentLocations = StudentArray.sharedInstance
                 self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
-//                self.studentLocations = StudentLocation.studentLocationsFromResults(results: pinResults as! [[String:AnyObject]])
+            }
+            // Switch to Main Queue to display pins on map
+            DispatchQueue.main.async {
                 self.displayStudentLocations(result: self.studentLocations)
             }
         }
