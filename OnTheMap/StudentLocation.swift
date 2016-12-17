@@ -11,30 +11,51 @@ import UIKit
 struct StudentLocation {
     
     // MARK: Properties
+    // First initialize values in the struct
     
-    let objectID: String
-    let uniqueKey: String
-    let firstName: String
-    let lastName: String
-    let mapString: String
-    let mediaURL: String
-    let latitude: Double
-    let longitude: Double
-    let createdAt: Date
-    let updatedAt: Date
+    var objectID: String = ""
+    var uniqueKey: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var mapString: String = ""
+    var mediaURL: String = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var createdAt: Date = Date()
+    var updatedAt: Date = Date()
     
     init(value:[String:AnyObject]) {
-        objectID = (value["objectID"] as? String)!
-        uniqueKey = (value["uniqueKey"] as? String)!
-        firstName = (value["firstName"] as? String)!
-        lastName = (value["lastName"] as? String)!
-        mapString = (value["mapString"] as? String)!
-        mediaURL = (value["mediaURL"] as? String)!
-        latitude = (value["latitude"] as? Double)!
-        longitude = (value["longitude"] as? Double)!
-        createdAt = (value["createdAt"] as? Date)!
-        updatedAt = (value["updatedAt"] as? Date)!
-        
+        // Check each variable for nil value, then update if there is a value
+        if let objectID = value["objectID"] as? String {
+            self.objectID = objectID
+        }
+        if let uniqueKey = value["uniqueKey"] as? String {
+            self.uniqueKey = uniqueKey
+        }
+        if let firstName = value["firstName"] as? String {
+            self.firstName = firstName
+        }
+        if let lastName = value["lastName"] as? String {
+            self.lastName = lastName
+        }
+        if let mapString = value["mapString"] as? String {
+            self.mapString = mapString
+        }
+        if let mediaURL = value["mediaURL"] as? String {
+            self.mediaURL = mediaURL
+        }
+        if let latitude = value["latitude"] as? Double {
+            self.latitude = latitude
+        }
+        if let longitude = value["longitude"] as? Double {
+            self.longitude = longitude
+        }
+        if let createdAt = value["createdAt"] as? Date {
+            self.createdAt = createdAt
+        }
+        if let updatedAt = value["updatedAt"] as? Date {
+            self.updatedAt = updatedAt
+        }
     }
     
     static func studentLocationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
