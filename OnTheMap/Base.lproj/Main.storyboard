@@ -153,7 +153,7 @@
                 <tabBarController id="gu0-EF-doC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Xun-X4-wJT">
                         <barButtonItem key="leftBarButtonItem" image="mapPin" id="1jD-Fj-LyK"/>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="k1P-im-M35"/>
+                        <barButtonItem key="rightBarButtonItem" image="logout" id="k1P-im-M35"/>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ubv-mF-kfF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -195,6 +195,7 @@
     </scenes>
     <resources>
         <image name="listPin" width="32" height="32"/>
+        <image name="logout" width="30" height="30"/>
         <image name="mapPin" width="25" height="25"/>
     </resources>
 </document>
