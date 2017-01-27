@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController:  UIViewController, MKMapViewDelegate  {
-
+    
     // MARK:  Variables
 
     let studentLocations = StudentArray.sharedInstance
@@ -21,6 +21,8 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
+        self.navigationController?.title = "On The Map"
         
         // Get the student locations for display
         getStudentLocations()
