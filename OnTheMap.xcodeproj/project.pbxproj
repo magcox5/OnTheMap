@@ -19,6 +19,7 @@
 		DA46F7D91DC1B2B000B8CEC8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */; };
 		DA7F49341DE2A44700BBD760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F49331DE2A44700BBD760 /* MapViewController.swift */; };
 		DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8794571DC2BE7300D0B8FB /* StudentLocation.swift */; };
+		DA9E17501E3EB8F200A5AE7B /* MapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9E174F1E3EB8F200A5AE7B /* MapTabBarController.swift */; };
 		DABB6DE01DCBB0580046FCF9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */; };
 		DAD85E431DDF746B001FE719 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD85E421DDF746B001FE719 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DA7F49331DE2A44700BBD760 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA8794571DC2BE7300D0B8FB /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		DA9E174F1E3EB8F200A5AE7B /* MapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabBarController.swift; sourceTree = "<group>"; };
 		DABB6DDF1DCBB0570046FCF9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		DAD85E421DDF746B001FE719 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				DA399D691DB715B5009355AA /* LoginViewController.swift */,
 				DA7F49331DE2A44700BBD760 /* MapViewController.swift */,
+				DA9E174F1E3EB8F200A5AE7B /* MapTabBarController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				DA1AE1211E0333B700E26E30 /* StudentArray.swift in Sources */,
 				DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */,
 				DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */,
+				DA9E17501E3EB8F200A5AE7B /* MapTabBarController.swift in Sources */,
 				DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */,
 				DA399D821DB71DA4009355AA /* GCDBlackBox.swift in Sources */,
 				DABB6DE01DCBB0580046FCF9 /* BorderedButton.swift in Sources */,

@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="O4B-8S-uGY">
             <objects>
-                <viewController id="IIa-CI-etf" userLabel="Login" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="loginViewController" id="IIa-CI-etf" userLabel="Login" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pSD-3Z-JyX"/>
                         <viewControllerLayoutGuide type="bottom" id="gy2-cb-GmH"/>
@@ -150,10 +150,18 @@
         <!--On The Map-->
         <scene sceneID="qgf-4u-zlM">
             <objects>
-                <tabBarController id="gu0-EF-doC" sceneMemberID="viewController">
+                <tabBarController id="gu0-EF-doC" customClass="MapTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Xun-X4-wJT">
-                        <barButtonItem key="leftBarButtonItem" image="mapPin" id="1jD-Fj-LyK"/>
-                        <barButtonItem key="rightBarButtonItem" image="logout" id="k1P-im-M35"/>
+                        <barButtonItem key="leftBarButtonItem" image="mapPin" id="1jD-Fj-LyK">
+                            <connections>
+                                <action selector="addPin:" destination="gu0-EF-doC" id="2E4-va-e2S"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="logout" id="k1P-im-M35">
+                            <connections>
+                                <action selector="exitProgram:" destination="gu0-EF-doC" id="Z7J-GJ-5K7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ubv-mF-kfF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
