@@ -139,6 +139,17 @@ class LoginViewController: UIViewController {
                     return
             }
             
+            /* GUARD: Is there a userID in our result? */
+            if let userData = parsedResult["account"] as? [String: AnyObject] {
+                let userID = userData["key"]
+                print("My user id is:  \(userID!)")
+            }
+            else {
+                displayError("Cannot find userID in \(parsedResult!)")
+                return
+            }
+            
+            
 
             /* 6. Use the data! */
             print("Session Id is: \(sessionID)")

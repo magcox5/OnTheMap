@@ -16,11 +16,11 @@ class UdacityClient : NSObject {
     // shared session
     var session = URLSession.shared
     
-    // configuration object - Do I need it?
-    // var config = OTMConfig()
-    
     // authentication state
     var sessionID : String? = nil
+    
+    // user id info.
+    var userID : String? = nil
     
     // MARK: Initializers
     

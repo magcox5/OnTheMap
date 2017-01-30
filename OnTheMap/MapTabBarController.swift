@@ -24,7 +24,7 @@ class MapTabBarController:  UITabBarController {
     }
     @IBAction func exitProgram(_ sender: Any) {
         
-        // TODO:  Logout of the Udacity Parse database
+        // MARK:  Logout of the Udacity Parse database
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
@@ -43,8 +43,9 @@ class MapTabBarController:  UITabBarController {
             let range = Range(uncheckedBounds: (5, data!.count - 5))
             let newData = data?.subdata(in: range) /* subset response data! */
             print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-            // TODO:  Return to the login screen
+            // MARK:  Return to the login screen
             _ = self.navigationController?.popToRootViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
             print("Am I at the login screen now?")
 
         }
