@@ -22,6 +22,9 @@ class MapTabBarController:  UITabBarController {
         //  TODO:  if no pin exists, get the info. to be added 
         //  TODO:  Perform necessary updates
     }
+    @IBAction func refreshPins(_ sender: Any) {
+        print("Loading 100 latest pins...")
+    }
     @IBAction func exitProgram(_ sender: Any) {
         
         // MARK:  Logout of the Udacity Parse database
@@ -43,14 +46,17 @@ class MapTabBarController:  UITabBarController {
             let range = Range(uncheckedBounds: (5, data!.count - 5))
             let newData = data?.subdata(in: range) /* subset response data! */
             print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-            // MARK:  Return to the login screen
-            _ = self.navigationController?.popToRootViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
-            print("Am I at the login screen now?")
-
         }
         task.resume()
+
+        // MARK:  Return to the login screen
+        
+        self.dismiss(animated: true, completion: nil)
+        print("Am I at the login screen now?")
+        
+
     }
     
-    
+//    navigationController?.popToRootViewController(animated: true)
+
 }

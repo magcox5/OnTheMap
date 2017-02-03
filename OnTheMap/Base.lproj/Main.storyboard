@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,13 +108,50 @@
         <!--PinTableView-->
         <scene sceneID="CZ2-J9-peW">
             <objects>
-                <viewController id="j9N-iS-Kbd" userLabel="PinTableView" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IbD-R9-EC7">
+                <viewController id="j9N-iS-Kbd" userLabel="PinTableView" customClass="PinTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IbD-R9-EC7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pinCell" textLabel="wVd-ba-dFc" detailTextLabel="KdV-EU-ah5" imageView="j1F-Vx-3rd" style="IBUITableViewCellStyleSubtitle" id="gTg-Pp-V8j">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTg-Pp-V8j" id="5Up-ZD-ko8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wVd-ba-dFc">
+                                            <rect key="frame" x="55" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="mapPin" id="j1F-Vx-3rd">
+                                            <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KdV-EU-ah5">
+                                            <rect key="frame" x="55" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j9N-iS-Kbd" id="LRU-z5-ki8"/>
+                            <outlet property="delegate" destination="j9N-iS-Kbd" id="6Iq-hE-yof"/>
+                        </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Table" image="listPin" id="xxG-F7-M2U" userLabel="Table"/>
+                    <connections>
+                        <outlet property="pinTableView" destination="IbD-R9-EC7" id="uZB-R0-50A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWJ-as-LxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,11 +195,18 @@
                                 <action selector="addPin:" destination="gu0-EF-doC" id="2E4-va-e2S"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="logout" id="k1P-im-M35">
-                            <connections>
-                                <action selector="exitProgram:" destination="gu0-EF-doC" id="Z7J-GJ-5K7"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="logout" id="k1P-im-M35">
+                                <connections>
+                                    <action selector="exitProgram:" destination="gu0-EF-doC" id="Z7J-GJ-5K7"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="l2B-Rh-6DI">
+                                <connections>
+                                    <action selector="refreshPins:" destination="gu0-EF-doC" id="1Ol-4J-gAX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ubv-mF-kfF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

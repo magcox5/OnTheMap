@@ -84,7 +84,7 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     
     
     private func displayStudentLocations() {
-            print("Made it to here!")
+//            print("Made it to displayStudentLocations!")
         var annotations = [MKPointAnnotation]()
         let locations = self.studentLocations.thisStudentArray
             for student in locations {
