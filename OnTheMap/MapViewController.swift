@@ -25,18 +25,15 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         self.navigationController?.title = "On The Map"
         
         // Get the student locations for display
-        getStudentLocations()
+        // getStudentLocations()
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Get the student locations to populate the map
         getStudentLocations()
-//        storeStudentLocations()
-//        displayStudentLocations()
-
     }
 
     private func getStudentLocations() {

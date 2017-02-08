@@ -13,8 +13,8 @@ import UIKit
 class PinTableViewController: UITableViewController {
 
     // MARK:  Variables
-    
-    var studentLocations = StudentArray.sharedInstance.thisStudentArray
+    let studentLocations = StudentArray.sharedInstance
+//    var studentLocations = StudentArray.sharedInstance.thisStudentArray
 
     @IBOutlet var pinTableView: UITableView!
     
@@ -22,12 +22,13 @@ class PinTableViewController: UITableViewController {
     // Reload table view when view appears/loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        pinTableView.reloadData()
-    }
+      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+//        self.tabBarController?.tabBar.isHidden = false
+  //      studentLocations = StudentArray.sharedInstance.thisStudentArray
+        getStudentLocations()
         pinTableView.reloadData()
     }
     
@@ -35,8 +36,9 @@ class PinTableViewController: UITableViewController {
     // MARK: Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentLocations.count
-        // return 100
+        let studentLoc = studentLocations.thisStudentArray
+        print(studentLoc)
+        return studentLoc.count
     }
     
  
@@ -44,7 +46,7 @@ class PinTableViewController: UITableViewController {
         
         let pinCell = tableView.dequeueReusableCell(withIdentifier: "pinCell")!
         
-        let currentPin = studentLocations[indexPath.row]
+        let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
         
         // Set the labels
         pinCell.textLabel?.text = currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
@@ -103,7 +105,7 @@ class PinTableViewController: UITableViewController {
             if let pinResults = parsedResult["results"] {
                 print(pinResults!)
                 // Store student locations in data structure
-                self.studentLocations = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
+                self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
             }
             // Switch to Main Queue to display pins on map
             DispatchQueue.main.async {
