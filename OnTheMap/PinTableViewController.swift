@@ -15,9 +15,6 @@ class PinTableViewController: UITableViewController {
     // MARK:  Variables
     let studentLocations = StudentArray.sharedInstance
 //    var studentLocations = StudentArray.sharedInstance.thisStudentArray
-
-    @IBOutlet var pinTableView: UITableView!
-    
     
     // Reload table view when view appears/loads
     override func viewDidLoad() {
@@ -29,7 +26,7 @@ class PinTableViewController: UITableViewController {
 //        self.tabBarController?.tabBar.isHidden = false
   //      studentLocations = StudentArray.sharedInstance.thisStudentArray
         getStudentLocations()
-        pinTableView.reloadData()
+        tableView.reloadData()
     }
     
     
@@ -41,9 +38,7 @@ class PinTableViewController: UITableViewController {
         return studentLoc.count
     }
     
- 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pinCell = tableView.dequeueReusableCell(withIdentifier: "pinCell")!
         
         let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
