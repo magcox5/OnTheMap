@@ -14,8 +14,7 @@ class PinTableViewController: UITableViewController {
 
     // MARK:  Variables
     let studentLocations = StudentArray.sharedInstance
-//    var studentLocations = StudentArray.sharedInstance.thisStudentArray
-    
+
     // Reload table view when view appears/loads
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +22,6 @@ class PinTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = false
-  //      studentLocations = StudentArray.sharedInstance.thisStudentArray
         getStudentLocations()
         tableView.reloadData()
     }
@@ -34,7 +31,6 @@ class PinTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let studentLoc = studentLocations.thisStudentArray
-        print(studentLoc)
         return studentLoc.count
     }
     
@@ -51,22 +47,20 @@ class PinTableViewController: UITableViewController {
         
         return pinCell
     }
-    
-//    override 
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("pinDetailViewController") as! pinDetailViewController
-//        detailController.detailPin = pinsList.pins[indexPath.row]
-//        self.navigationController!.pushViewController(detailController, animated: true)
-//        
-//    }
-//    
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            pinsList.pins.removeAtIndex(indexPath.row)
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-//        }
-//    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
+
+        let pinDetailName =         currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
+
+        let okController = UIAlertController(title: pinDetailName, message: currentPin.mediaURL, preferredStyle: .alert)
+
+        okController.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(okController, animated: true)
+
+}
     
     private func getStudentLocations() {
         

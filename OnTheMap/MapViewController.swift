@@ -81,7 +81,6 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     
     
     private func displayStudentLocations() {
-//            print("Made it to displayStudentLocations!")
         var annotations = [MKPointAnnotation]()
         let locations = self.studentLocations.thisStudentArray
             for student in locations {
@@ -109,8 +108,34 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         }
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
-        
-
-   
 }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // 1
+        let identifier = "Capital"
+        
+        // 2
+//        if annotation is Capital {
+            // 3
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if annotationView == nil {
+                //4
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true
+                
+                // 5
+                let btn = UIButton(type: .detailDisclosure)
+                annotationView!.rightCalloutAccessoryView = btn
+            } else {
+                // 6
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
+//        }
+        
+        // 7
+//        return nil
+    }
 }
