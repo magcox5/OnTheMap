@@ -13,8 +13,6 @@ class MapTabBarController:  UITabBarController {
     
     @IBAction func addPin(_ sender: Any) {
         
-        print("pin pressed:  add one now!")
-        
         // TODO:  check if user already has a pin
         // TODO:  if a pin exists for the user, ask if the user wants to update it or cancel.
         // TODO: if user wants to update pin, show current pin info & allow editing
