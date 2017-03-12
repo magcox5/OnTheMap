@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA1AE1211E0333B700E26E30 /* StudentArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AE1201E0333B500E26E30 /* StudentArray.swift */; };
+		DA21C6351E6E332300288116 /* EnterLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA21C6341E6E332300288116 /* EnterLinkViewController.swift */; };
 		DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D671DB715B5009355AA /* AppDelegate.swift */; };
 		DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D691DB715B5009355AA /* LoginViewController.swift */; };
 		DA399D6D1DB715B5009355AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA399D6B1DB715B5009355AA /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		DA1AE1201E0333B500E26E30 /* StudentArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentArray.swift; sourceTree = "<group>"; };
+		DA21C6341E6E332300288116 /* EnterLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterLinkViewController.swift; sourceTree = "<group>"; };
 		DA399D641DB715B5009355AA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA399D671DB715B5009355AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA399D691DB715B5009355AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		DA399D7F1DB71D1E009355AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DA21C6341E6E332300288116 /* EnterLinkViewController.swift */,
 				DA75A65E1E678EE800794BB3 /* EnterLocationViewController.swift */,
 				DA3C5E3B1E43F5A400E0B438 /* PinTableViewController.swift */,
 				DA399D691DB715B5009355AA /* LoginViewController.swift */,
@@ -253,6 +256,7 @@
 				DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */,
 				DA3C5E3C1E43F5A400E0B438 /* PinTableViewController.swift in Sources */,
 				DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */,
+				DA21C6351E6E332300288116 /* EnterLinkViewController.swift in Sources */,
 				DA9E17501E3EB8F200A5AE7B /* MapTabBarController.swift in Sources */,
 				DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */,
 				DA399D821DB71DA4009355AA /* GCDBlackBox.swift in Sources */,
