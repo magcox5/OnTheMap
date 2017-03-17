@@ -13,9 +13,10 @@ import MapKit
 class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate   {
 
     // MARK:  Variables
-//    var newStudentLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+
     var newStudentLocation: CLLocation?
-    
+    var newStudentInfo: StudentLocation?
+
     @IBOutlet weak var studentURL: UITextField!
     
     let regionRadius: CLLocationDistance = 1000
@@ -25,7 +26,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     }
     
     @IBAction func saveStudentLocation(_ sender: Any) {
-        // TODO:  Create Structure for student data
+
         // TODO:  Post data to database
         // TODO:  Return to Map View
     }

@@ -1,28 +1,67 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-import CoreLocation
 
-let locationToFind = "Palos Verdes, California"
-let geoCoder = CLGeocoder()
-
-geoCoder.geocodeAddressString(locationToFind, completionHandler: {(placemarks, error) -> Void in
-    if((error) != nil){
-        print("Unable to find that location... please try again")
-        print("Error", error as Any)
+struct StudentLocation {
+    
+    // MARK: Properties
+    // First initialize values in the struct
+    
+    var objectID: String = ""
+    var uniqueKey: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var mapString: String = ""
+    var mediaURL: String = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var createdAt: Date = Date()
+    var updatedAt: Date = Date()
+    
+    init(value:[String:AnyObject]) {
+        // Check each variable for nil value, then update if there is a value
+        if let objectID = value["objectID"] as? String {
+            self.objectID = objectID
+        }
+        if let uniqueKey = value["uniqueKey"] as? String {
+            self.uniqueKey = uniqueKey
+        }
+        if let firstName = value["firstName"] as? String {
+            self.firstName = firstName
+        }
+        if let lastName = value["lastName"] as? String {
+            self.lastName = lastName
+        }
+        if let mapString = value["mapString"] as? String {
+            self.mapString = mapString
+        }
+        if let mediaURL = value["mediaURL"] as? String {
+            self.mediaURL = mediaURL
+        }
+        if let latitude = value["latitude"] as? Double {
+            self.latitude = latitude
+        }
+        if let longitude = value["longitude"] as? Double {
+            self.longitude = longitude
+        }
+        if let createdAt = value["createdAt"] as? Date {
+            self.createdAt = createdAt
+        }
+        if let updatedAt = value["updatedAt"] as? Date {
+            self.updatedAt = updatedAt
+        }
     }
-    if let placemark = placemarks?.first {
-        print("Location: \(locationToFind)")
-        print("Coordinates:  \(placemark.location!.coordinate)")
-        let newLatitude: CLLocationDegrees = (placemark.location?.coordinate.latitude)!
-        let newLongitude: CLLocationDegrees = (placemark.location?.coordinate.longitude)!
-        let newLocation = CLLocation(latitude: newLatitude, longitude: newLongitude)
+    
+    static func studentLocationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
         
-        print("Latitude:  \(newLatitude)")
-        print("Longitude:  \(newLongitude)")
-        print("Location:  \(newLocation)")
-
+        var studentLocations = [StudentLocation]()
         
+        // iterate through array of dictionaries, each StudentLocation is a dictionary
+        for result in results {
+            studentLocations.append(StudentLocation(value:result))
+        }
+        
+        return studentLocations
     }
-})
-
+    
+}

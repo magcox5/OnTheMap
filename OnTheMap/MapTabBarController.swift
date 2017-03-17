@@ -1,5 +1,5 @@
 //
-//  MapTabViewController.swift
+//  MapTabBarController.swift
 //  OnTheMap
 //
 //  Created by Molly Cox on 1/29/17.
@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class MapTabBarController:  UITabBarController {
+    
+    var studentUserID: String?
     
     @IBAction func addPin(_ sender: Any) {
         
@@ -54,7 +56,4 @@ class MapTabBarController:  UITabBarController {
         
 
     }
-    
-//    navigationController?.popToRootViewController(animated: true)
-
 }

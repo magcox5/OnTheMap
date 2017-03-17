@@ -9,6 +9,9 @@
 import UIKit
 import Foundation
 
+// Global Variable
+var studentUserID: String = ""
+
 class LoginViewController: UIViewController {
 
     // MARK: Properties
@@ -144,6 +147,7 @@ class LoginViewController: UIViewController {
             if let userData = parsedResult["account"] as? [String: AnyObject] {
                 let userID = userData["key"]
                 print("My user id is:  \(userID!)")
+                studentUserID = userID as! String
             }
             else {
                 displayError("Cannot find userID in \(parsedResult!)")
@@ -254,7 +258,6 @@ class LoginViewController: UIViewController {
         textField.leftViewMode = .always
         textField.backgroundColor = UdacityClient.UI.GreyColor
         textField.textColor = UdacityClient.UI.BlueColor
-//        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.white])
         textField.tintColor = UdacityClient.UI.BlueColor
         textField.delegate = self
     }
