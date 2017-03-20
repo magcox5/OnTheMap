@@ -15,7 +15,9 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     // MARK:  Variables
 
     var newStudentLocation: CLLocation?
-    var newStudentInfo: StudentLocation?
+    var firstName: String = ""
+    var lastName: String = ""
+    var mapString: String = ""
 
     @IBOutlet weak var studentURL: UITextField!
     
@@ -26,9 +28,36 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     }
     
     @IBAction func saveStudentLocation(_ sender: Any) {
-
         // TODO:  Post data to database
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.httpMethod = "POST"
+    request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+    request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        studentUserID = "\"\(studentUserID)\""
+        firstName = "\"\(firstName)\""
+        lastName = "\"\(lastName)\""
+        mapString = "\"\(mapString)\""
+        var newStudentURL = studentURL!.text!
+        newStudentURL = "\"\(newStudentURL)\""
+        let requestTest = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
+        request.httpBody = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.latitude)}".data(using: String.Encoding.utf8)
+        print(requestTest)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
+        }
+        task.resume()
+
+        // TODO:  Refresh Data
+        
         // TODO:  Return to Map View
+        self.presentingViewController?.dismiss(animated: true, completion: {})
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -40,11 +69,11 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         self.studentURL.delegate = self
         // set initial location user entered
         centerMapOnLocation(location: newStudentLocation!)
+        displayStudentLocations()
     }
 
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -52,4 +81,26 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         self.view.endEditing(true)
         return false
     }
+    
+    private func displayStudentLocations() {
+//        var annotation = [MKPointAnnotation].self
+        let location = self.newStudentLocation
+            // Notice that the float values are being used to create CLLocationDegree values.
+            // This is a version of the Double type.
+        let coordinate = location?.coordinate
+        let first = firstName
+        let last = lastName
+        let mediaURL = studentURL.text
+        
+        // Here we create the annotation and set its coordiate, title, and subtitle properties
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate!
+        annotation.title = "\(first) \(last)"
+        annotation.subtitle = mediaURL
+        
+        // When the array is complete, we add the annotations to the map.
+        self.mapView.addAnnotations([annotation])
+        print("Annotation Added")
+    }
+
 }

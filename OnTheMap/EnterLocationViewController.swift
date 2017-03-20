@@ -17,9 +17,6 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var studentLastName: UITextField!
     @IBOutlet weak var studyLocation: UITextField!
     
-    // MARK:  Variables
-    var newStudentInfo: StudentLocation?
-
     @IBAction func findStudyLocation(_ sender: Any) {
 
         let locationToFind =  studyLocation.text
@@ -47,27 +44,19 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                 print("Error", error as Any)
             }
             if let placemark = placemarks?.first {
-                print("Location: \(locationToFind)")
+                print("Location: \(locationToFind!)")
                 print("Coordinates:  \(placemark.location!.coordinate)")
                 let newLatitude: CLLocationDegrees = (placemark.location?.coordinate.latitude)!
                 let newLongitude: CLLocationDegrees = (placemark.location?.coordinate.longitude)!
                 let newLocation = CLLocation(latitude: newLatitude, longitude: newLongitude)
 
-                // Store data to newStudentInfo struct
-                self.newStudentInfo?.objectID = studentUserID
-                self.newStudentInfo?.firstName = self.studentFirstName.text!
-                self.newStudentInfo?.lastName = self.studentLastName.text!
-                self.newStudentInfo?.latitude = newLatitude
-                self.newStudentInfo?.longitude = newLongitude
-                self.newStudentInfo?.mapString = locationToFind!
-                
-                
                 DispatchQueue.main.async {
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
-                    enterLinkVC.newStudentInfo = self.newStudentInfo
-                    
+                    enterLinkVC.firstName = self.studentFirstName.text!
+                    enterLinkVC.lastName = self.studentLastName.text!
+                    enterLinkVC.mapString = self.studyLocation.text!
                     self.present(enterLinkVC, animated: true, completion: nil)
                 }
                 
@@ -83,6 +72,11 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         self.studentFirstName.delegate = self
         self.studentLastName.delegate = self
         self.studyLocation.delegate = self
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(EnterLocationViewController.cancelEnterURL))
+        self.navigationItem.rightBarButtonItem = cancelButton
+        self.navigationItem.title = "On The Map:  Enter Location"
+        self.navigationItem.rightBarButtonItem = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,14 +88,8 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func cancelEnterURL() {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/EnterLocationViewController.swift"
-            timestampString = "511226277.905646"
+            filePath = "OnTheMap/EnterLinkViewController.swift"
+            timestampString = "511663786.091357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "findStudyLocation(_:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "saveStudentLocation(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

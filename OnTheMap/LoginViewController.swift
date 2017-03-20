@@ -153,14 +153,11 @@ class LoginViewController: UIViewController {
                 displayError("Cannot find userID in \(parsedResult!)")
                 return
             }
-            
-            
 
             /* 6. Use the data! */
             print("Session Id is: \(sessionID)")
             self.appDelegate.sessionID = sessionID
             self.completeLogin()
-//            self.getUserID(sessionID)
             
             /* 7. Start the request */
         }) 

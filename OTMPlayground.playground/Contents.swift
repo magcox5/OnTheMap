@@ -2,66 +2,16 @@
 
 import UIKit
 
-struct StudentLocation {
-    
-    // MARK: Properties
-    // First initialize values in the struct
-    
-    var objectID: String = ""
-    var uniqueKey: String = ""
-    var firstName: String = ""
-    var lastName: String = ""
-    var mapString: String = ""
-    var mediaURL: String = ""
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
-    var createdAt: Date = Date()
-    var updatedAt: Date = Date()
-    
-    init(value:[String:AnyObject]) {
-        // Check each variable for nil value, then update if there is a value
-        if let objectID = value["objectID"] as? String {
-            self.objectID = objectID
-        }
-        if let uniqueKey = value["uniqueKey"] as? String {
-            self.uniqueKey = uniqueKey
-        }
-        if let firstName = value["firstName"] as? String {
-            self.firstName = firstName
-        }
-        if let lastName = value["lastName"] as? String {
-            self.lastName = lastName
-        }
-        if let mapString = value["mapString"] as? String {
-            self.mapString = mapString
-        }
-        if let mediaURL = value["mediaURL"] as? String {
-            self.mediaURL = mediaURL
-        }
-        if let latitude = value["latitude"] as? Double {
-            self.latitude = latitude
-        }
-        if let longitude = value["longitude"] as? Double {
-            self.longitude = longitude
-        }
-        if let createdAt = value["createdAt"] as? Date {
-            self.createdAt = createdAt
-        }
-        if let updatedAt = value["updatedAt"] as? Date {
-            self.updatedAt = updatedAt
-        }
-    }
-    
-    static func studentLocationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
-        
-        var studentLocations = [StudentLocation]()
-        
-        // iterate through array of dictionaries, each StudentLocation is a dictionary
-        for result in results {
-            studentLocations.append(StudentLocation(value:result))
-        }
-        
-        return studentLocations
-    }
-    
-}
+let request = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+let oldStudentUserID = "1234"
+let studentUserID = "\"\(oldStudentUserID)\""
+let firstName = "Molly"
+let lastName = "Cox"
+let mapString = "Yosemite National Park"
+let studentURL = "https://sporkful.com"
+let newLatitude = 37.386052
+let newLongitude = -122.083851
+let request2 = "{\"uniqueKey\": \(studentUserID), \"firstName\": firstName, \"lastName\": lastName,\"mapString\": mapString, \"mediaURL\": studentURL.text,\"latitude\": newLatitude, \"longitude\": newLongitude}"
+
+print(request as Any)
+print(request2 as Any)
