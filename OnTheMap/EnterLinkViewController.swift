@@ -24,7 +24,9 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     let regionRadius: CLLocationDistance = 1000
 
     @IBAction func cancelAddPin(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: {})
+
+        // self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveStudentLocation(_ sender: Any) {
@@ -43,7 +45,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         var newStudentURL = studentURL!.text!
         newStudentURL = "\"\(newStudentURL)\""
         let requestTest = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
-        request.httpBody = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.latitude)}".data(using: String.Encoding.utf8)
+        request.httpBody = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
         print(requestTest)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
@@ -57,7 +59,9 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         // TODO:  Refresh Data
         
         // TODO:  Return to Map View
-        self.presentingViewController?.dismiss(animated: true, completion: {})
+        self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: {})
+//        self.dismiss(animated: true, completion: {})
+//        self.presentingViewController?.dismiss(animated: true, completion: {})
     }
     
     @IBOutlet weak var mapView: MKMapView!

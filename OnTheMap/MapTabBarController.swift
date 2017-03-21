@@ -14,13 +14,6 @@ class MapTabBarController:  UITabBarController {
     var studentUserID: String?
     
     @IBAction func addPin(_ sender: Any) {
-        
-        // TODO:  check if user already has a pin
-        // TODO:  if a pin exists for the user, ask if the user wants to update it or cancel.
-        // TODO: if user wants to update pin, show current pin info & allow editing
-        // TODO:  if user  doesn't want to update it, cancel the operation
-        //  TODO:  if no pin exists, get the info. to be added 
-        //  TODO:  Perform necessary updates
     }
     @IBAction func refreshPins(_ sender: Any) {
         print("Loading 100 latest pins...")
@@ -50,10 +43,6 @@ class MapTabBarController:  UITabBarController {
         task.resume()
 
         // MARK:  Return to the login screen
-        
         self.dismiss(animated: true, completion: nil)
-        print("Am I at the login screen now?")
-        
-
     }
 }
