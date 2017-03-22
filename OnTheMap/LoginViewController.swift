@@ -25,6 +25,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: BorderedButton!
     
+    @IBAction func signUpButton(_ sender: Any) {
+        
+        UIApplication.shared.openURL(NSURL(string: "http://www.udacity.com")! as URL)
+    }
     @IBOutlet weak var debugLabel: UILabel!
     
     // MARK: Life Cycle

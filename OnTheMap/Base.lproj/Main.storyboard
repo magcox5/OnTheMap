@@ -68,12 +68,23 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc3-Bb-8pC">
+                                <rect key="frame" x="16" y="318" width="343" height="30"/>
+                                <state key="normal" title="Don't have an account?  Sign Up">
+                                    <color key="titleColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButton:" destination="IIa-CI-etf" eventType="touchUpInside" id="TxM-dE-hA5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Lc3-Bb-8pC" firstAttribute="top" secondItem="kKL-wr-LAm" secondAttribute="bottom" constant="19" id="7fh-24-H3n"/>
                             <constraint firstItem="kKL-wr-LAm" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="8ym-tC-aaL"/>
                             <constraint firstItem="dzc-AE-Sr9" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="Ch8-ib-eA1"/>
+                            <constraint firstItem="Lc3-Bb-8pC" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="DGm-Hb-rsR"/>
                             <constraint firstItem="G4z-3B-fhH" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="EJ0-jQ-2L1"/>
                             <constraint firstItem="G4z-3B-fhH" firstAttribute="top" secondItem="kKL-wr-LAm" secondAttribute="bottom" constant="16" id="H8H-L1-CdH"/>
                             <constraint firstItem="eAv-Rf-fb9" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="JiF-Rv-SE4"/>
@@ -86,6 +97,7 @@
                             <constraint firstItem="Aoe-2i-Uw6" firstAttribute="top" secondItem="pSD-3Z-JyX" secondAttribute="bottom" constant="8" id="c4F-7a-u93"/>
                             <constraint firstItem="eAv-Rf-fb9" firstAttribute="top" secondItem="Aoe-2i-Uw6" secondAttribute="bottom" constant="34" id="jQf-XG-XiF"/>
                             <constraint firstItem="Aoe-2i-Uw6" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="lU4-l1-6dq"/>
+                            <constraint firstItem="Lc3-Bb-8pC" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="nOW-00-zkh"/>
                             <constraint firstItem="aWp-f9-nTr" firstAttribute="top" secondItem="eAv-Rf-fb9" secondAttribute="bottom" constant="39" id="s0k-JK-Iyo"/>
                             <constraint firstItem="aWp-f9-nTr" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="wYK-Iz-A80"/>
                             <constraint firstItem="aWp-f9-nTr" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="xts-fl-Ov2"/>

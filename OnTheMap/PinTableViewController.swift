@@ -42,9 +42,6 @@ class PinTableViewController: UITableViewController {
         // Set the labels
         pinCell.textLabel?.text = currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
         pinCell.detailTextLabel?.text = currentPin.mapString
-        print(pinCell.textLabel?.text as Any)
-        print(pinCell.detailTextLabel?.text as Any)
-        
         return pinCell
     }
 
@@ -52,13 +49,15 @@ class PinTableViewController: UITableViewController {
 
         let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
 
-        let pinDetailName =         currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
+//        let pinDetailName = currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
+        
+        UIApplication.shared.openURL(NSURL(string: currentPin.mediaURL)! as URL)
 
-        let okController = UIAlertController(title: pinDetailName, message: currentPin.mediaURL, preferredStyle: .alert)
+        //let okController = UIAlertController(title: pinDetailName, message: currentPin.mediaURL, preferredStyle: .alert)
 
-        okController.addAction(UIAlertAction(title: "OK", style: .default))
+        //okController.addAction(UIAlertAction(title: "OK", style: .default))
 
-        present(okController, animated: true)
+        //present(okController, animated: true)
 
 }
     
