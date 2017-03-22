@@ -21,9 +21,10 @@ extension UdacityClient {
         static let AppID : String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         
         // MARK: URLs
-        static let ApiScheme = "https"
+        static let ApiScheme = "https://"
         static let ApiHost = "parse.udacity.com"
         static let ApiPath = "/parse/classes"
+        static let ApiSearch = "/StudentLocation?limit=100&order=-updatedAt"
         
         // MARK:  HTTP Header Fields
         static let httpHeaderApiKey = "X-Parse-REST-API-Key"
