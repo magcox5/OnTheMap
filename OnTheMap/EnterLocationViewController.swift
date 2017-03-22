@@ -17,6 +17,11 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var studentLastName: UITextField!
     @IBOutlet weak var studyLocation: UITextField!
     
+    // MARK:  Actions
+    @IBAction func cancelAddPin(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func findStudyLocation(_ sender: Any) {
 
         let locationToFind =  studyLocation.text
@@ -73,23 +78,14 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         self.studentLastName.delegate = self
         self.studyLocation.delegate = self
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(EnterLocationViewController.cancelEnterURL))
-        self.navigationItem.rightBarButtonItem = cancelButton
         self.navigationItem.title = "On The Map:  Enter Location"
-        self.navigationItem.rightBarButtonItem = nil
+        navigationController?.navigationBar.barTintColor = UIColor.white
+//        self.navigationItem.title.color = .White
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
 
-    func cancelEnterURL() {
-        self.dismiss(animated: true, completion: nil)
-    }
 }

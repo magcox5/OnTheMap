@@ -19,6 +19,7 @@
 		DA399D821DB71DA4009355AA /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D811DB71DA4009355AA /* GCDBlackBox.swift */; };
 		DA3C5E3C1E43F5A400E0B438 /* PinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C5E3B1E43F5A400E0B438 /* PinTableViewController.swift */; };
 		DA46F7D91DC1B2B000B8CEC8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */; };
+		DA5660751E831B6C0063BEC6 /* OTMConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5660741E831B6C0063BEC6 /* OTMConvenience.swift */; };
 		DA75A65F1E678EE800794BB3 /* EnterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA75A65E1E678EE800794BB3 /* EnterLocationViewController.swift */; };
 		DA7F49341DE2A44700BBD760 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F49331DE2A44700BBD760 /* MapViewController.swift */; };
 		DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8794571DC2BE7300D0B8FB /* StudentLocation.swift */; };
@@ -42,6 +43,7 @@
 		DA399D811DB71DA4009355AA /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		DA3C5E3B1E43F5A400E0B438 /* PinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinTableViewController.swift; sourceTree = "<group>"; };
 		DA46F7D81DC1B2B000B8CEC8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DA5660741E831B6C0063BEC6 /* OTMConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvenience.swift; sourceTree = "<group>"; };
 		DA75A65E1E678EE800794BB3 /* EnterLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterLocationViewController.swift; sourceTree = "<group>"; };
 		DA7F49331DE2A44700BBD760 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DA8794571DC2BE7300D0B8FB /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
@@ -141,10 +143,18 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		DA5660731E831B0B0063BEC6 /* OTM */ = {
+			isa = PBXGroup;
+			children = (
+				DA5660741E831B6C0063BEC6 /* OTMConvenience.swift */,
+			);
+			name = OTM;
+			sourceTree = "<group>";
+		};
 		DA8794541DC2BA7D00D0B8FB /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				DA8794561DC2BACD00D0B8FB /* Facebook */,
+				DA5660731E831B0B0063BEC6 /* OTM */,
 				DA8794551DC2BA9B00D0B8FB /* Udacity */,
 			);
 			name = Clients;
@@ -159,13 +169,6 @@
 				DA1AE1201E0333B500E26E30 /* StudentArray.swift */,
 			);
 			name = Udacity;
-			sourceTree = "<group>";
-		};
-		DA8794561DC2BACD00D0B8FB /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Facebook;
 			sourceTree = "<group>";
 		};
 		DAD85E411DDF746A001FE719 /* Frameworks */ = {
@@ -256,6 +259,7 @@
 				DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */,
 				DA3C5E3C1E43F5A400E0B438 /* PinTableViewController.swift in Sources */,
 				DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */,
+				DA5660751E831B6C0063BEC6 /* OTMConvenience.swift in Sources */,
 				DA21C6351E6E332300288116 /* EnterLinkViewController.swift in Sources */,
 				DA9E17501E3EB8F200A5AE7B /* MapTabBarController.swift in Sources */,
 				DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */,

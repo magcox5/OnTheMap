@@ -97,9 +97,9 @@ class PinTableViewController: UITableViewController {
                 self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
             }
             // Switch to Main Queue to display pins on map
-            DispatchQueue.main.async {
+ //           DispatchQueue.main.async {
  //               self.displayStudentLocations()
-            }
+//            }
         }
         task.resume()
         
