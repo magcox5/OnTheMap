@@ -104,4 +104,8 @@ class PinTableViewController: UITableViewController {
         
     }
     
+    func refreshTable() {
+        getStudentLocations()
+    }
+    
 }

@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpButton(_ sender: Any) {
         
-        UIApplication.shared.openURL(NSURL(string: "http://www.udacity.com")! as URL)
+        UIApplication.shared.openURL(NSURL(string: "https://auth.udacity.com/sign-up")! as URL)
     }
     @IBOutlet weak var debugLabel: UILabel!
     

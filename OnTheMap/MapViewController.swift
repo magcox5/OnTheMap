@@ -148,6 +148,10 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
                 }
             }
         }
+    
+    func refreshMap(){
+        getStudentLocations()
+    }
 
 }
 

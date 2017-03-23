@@ -17,6 +17,19 @@ class MapTabBarController:  UITabBarController {
     }
     @IBAction func refreshPins(_ sender: Any) {
         print("Loading 100 latest pins...")
+        if self.selectedViewController! is UINavigationController {
+            let controller = MapViewController()
+            controller.refreshMap()
+        } else if self.selectedViewController! is PinTableViewController {
+            let controller = self.selectedViewController as! PinTableViewController
+            controller.refreshTable()
+        } else {
+            let nextController = UIAlertController()
+            let okAction = UIAlertAction(title: "Error:  can't refresh this view type \(self.selectedViewController)", style: UIAlertActionStyle.default)
+            nextController.addAction(okAction)
+            self.present(nextController, animated:  true, completion:nil)
+            
+        }
     }
     @IBAction func exitProgram(_ sender: Any) {
         
