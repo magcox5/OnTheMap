@@ -51,8 +51,8 @@ class PinTableViewController: UITableViewController {
 
 //        let pinDetailName = currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
         
-        UIApplication.shared.openURL(NSURL(string: currentPin.mediaURL)! as URL)
-
+        UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
+        
         //let okController = UIAlertController(title: pinDetailName, message: currentPin.mediaURL, preferredStyle: .alert)
 
         //okController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -70,7 +70,7 @@ class PinTableViewController: UITableViewController {
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                print("There was an error with your request: \(String(describing: error))")
                 return
             }
             

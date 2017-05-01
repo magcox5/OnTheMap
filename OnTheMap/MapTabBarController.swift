@@ -25,7 +25,7 @@ class MapTabBarController:  UITabBarController {
             controller.refreshTable()
         } else {
             let nextController = UIAlertController()
-            let okAction = UIAlertAction(title: "Error: \(self.selectedViewController)", style: UIAlertActionStyle.default)
+            let okAction = UIAlertAction(title: "Error: \(String(describing: self.selectedViewController))", style: UIAlertActionStyle.default)
             nextController.addAction(okAction)
             self.present(nextController, animated:  true, completion:nil)
             

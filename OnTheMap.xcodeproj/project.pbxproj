@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DA1AE1211E0333B700E26E30 /* StudentArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AE1201E0333B500E26E30 /* StudentArray.swift */; };
 		DA21C6351E6E332300288116 /* EnterLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA21C6341E6E332300288116 /* EnterLinkViewController.swift */; };
+		DA26C80E1E8AE969001275D4 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA26C80D1E8AE969001275D4 /* OTMClient.swift */; };
+		DA26C8101E8B1568001275D4 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA26C80F1E8B1568001275D4 /* UdacityConvenience.swift */; };
 		DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D671DB715B5009355AA /* AppDelegate.swift */; };
 		DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA399D691DB715B5009355AA /* LoginViewController.swift */; };
 		DA399D6D1DB715B5009355AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA399D6B1DB715B5009355AA /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		DA1AE1201E0333B500E26E30 /* StudentArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentArray.swift; sourceTree = "<group>"; };
 		DA21C6341E6E332300288116 /* EnterLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterLinkViewController.swift; sourceTree = "<group>"; };
+		DA26C80D1E8AE969001275D4 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		DA26C80F1E8B1568001275D4 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		DA399D641DB715B5009355AA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA399D671DB715B5009355AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA399D691DB715B5009355AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5660741E831B6C0063BEC6 /* OTMConvenience.swift */,
+				DA26C80D1E8AE969001275D4 /* OTMClient.swift */,
 			);
 			name = OTM;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				DA399D7B1DB71AE4009355AA /* UdacityClient.swift */,
+				DA26C80F1E8B1568001275D4 /* UdacityConvenience.swift */,
 				DA399D791DB7166B009355AA /* Constants.swift */,
 				DA8794571DC2BE7300D0B8FB /* StudentLocation.swift */,
 				DA1AE1201E0333B500E26E30 /* StudentArray.swift */,
@@ -256,10 +262,12 @@
 				DA399D7A1DB7166B009355AA /* Constants.swift in Sources */,
 				DA399D7C1DB71AE4009355AA /* UdacityClient.swift in Sources */,
 				DA1AE1211E0333B700E26E30 /* StudentArray.swift in Sources */,
+				DA26C8101E8B1568001275D4 /* UdacityConvenience.swift in Sources */,
 				DA399D6A1DB715B5009355AA /* LoginViewController.swift in Sources */,
 				DA3C5E3C1E43F5A400E0B438 /* PinTableViewController.swift in Sources */,
 				DA8794581DC2BE7300D0B8FB /* StudentLocation.swift in Sources */,
 				DA5660751E831B6C0063BEC6 /* OTMConvenience.swift in Sources */,
+				DA26C80E1E8AE969001275D4 /* OTMClient.swift in Sources */,
 				DA21C6351E6E332300288116 /* EnterLinkViewController.swift in Sources */,
 				DA9E17501E3EB8F200A5AE7B /* MapTabBarController.swift in Sources */,
 				DA399D681DB715B5009355AA /* AppDelegate.swift in Sources */,

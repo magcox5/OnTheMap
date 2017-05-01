@@ -11,6 +11,8 @@ import Foundation
 
 // Global Variable
 var studentUserID: String = ""
+var studentFirstName: String = ""
+var studentLastName: String = ""
 
 class LoginViewController: UIViewController {
 
@@ -27,8 +29,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpButton(_ sender: Any) {
         
-        UIApplication.shared.openURL(NSURL(string: "https://auth.udacity.com/sign-up")! as URL)
-    }
+//    UIApplication.shared.openURL(NSURL(string: "https://auth.udacity.com/sign-up")! as URL)
+        UIApplication.shared.open(NSURL(string: "https://auth.udacity.com/sign-up")! as URL, options: [:], completionHandler: nil)    }
+    
     @IBOutlet weak var debugLabel: UILabel!
     
     // MARK: Life Cycle
@@ -96,24 +99,24 @@ class LoginViewController: UIViewController {
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTask(with: request, completionHandler: { (data, response, error) in
             
-            // MARK:  Error Checking
-            // if an error occurs, pop up an alert view and re-enable the UI
-            func displayError(_ error: String) {
-                //print(error)
-                let nextController = UIAlertController()
-                let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
+//            // MARK:  Error Checking
+//            // if an error occurs, pop up an alert view and re-enable the UI
+//            func displayError(_ error: String) {
+
+//                let nextController = UIAlertController()
+//                let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
                 
-                nextController.addAction(okAction)
+//                nextController.addAction(okAction)
                 
-                self.present(nextController, animated:  true, completion:nil)
-                performUIUpdatesOnMain {
-                    self.setUIEnabled(true)
-                }
-            }
+//                self.present(nextController, animated:  true, completion:nil)
+//                performUIUpdatesOnMain {
+//                    self.setUIEnabled(true)
+//                }
+//            }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                displayError("There was an error with your request: \(error)")
+                self.displayError("There was an error with your request: \(String(describing: error))")
                 print(error!)
                 return
             }
@@ -128,7 +131,7 @@ class LoginViewController: UIViewController {
             do {
                 parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject!
             } catch {
-                displayError("Could not parse the data as JSON: '\(newData)'")
+                self.displayError("Could not parse the data as JSON: '\(newData)'")
                 return
             }
             
@@ -136,37 +139,101 @@ class LoginViewController: UIViewController {
             /* GUARD: First, is there a session in our result? */
             guard let sessionData = parsedResult["session"] as? NSDictionary
                 else {
-                    displayError("Login Failed:  invalid username/password")
+                    self.displayError("Login Failed:  invalid username/password")
                     return
             }
 
             /* GUARD: Is there a session_id in our result? */
             guard let sessionID = sessionData[UdacityClient.ParameterKeys.SessionID] as? String
                 else {
-                    displayError("Cannot find key '\(UdacityClient.ParameterKeys.SessionID)'in \(parsedResult!)")
+                    self.displayError("Cannot find key '\(UdacityClient.ParameterKeys.SessionID)'in \(parsedResult!)")
                     return
             }
             
             /* GUARD: Is there a userID in our result? */
             if let userData = parsedResult["account"] as? [String: AnyObject] {
+                print(userData)
                 let userID = userData["key"]
                 print("My user id is:  \(userID!)")
                 studentUserID = userID as! String
             }
             else {
-                displayError("Cannot find userID in \(parsedResult!)")
+                self.displayError("Cannot find userID in \(parsedResult!)")
                 return
             }
 
             /* 6. Use the data! */
             print("Session Id is: \(sessionID)")
             self.appDelegate.sessionID = sessionID
-            self.completeLogin()
+            self.getUdacityName(userID: studentUserID)
+            //self.completeLogin()
             
             /* 7. Start the request */
         }) 
         task.resume()
     }
+    
+    func getUdacityName(userID: String)
+    {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(userID)")!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            let range = Range(uncheckedBounds: (5, data!.count - 5))
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+
+            /* 5. Parse the data */
+           let parsedResult: [String: AnyObject]
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! [String: AnyObject]
+            } catch {
+                self.displayError("Could not parse udacity user data as JSON")
+                return
+            }
+
+            /* GUARD: Is there a user in our result? */
+            guard let userData = parsedResult["user"] as? [String: AnyObject]
+            else {
+                self.displayError("Cannot find 'user' in \(parsedResult)")
+                return
+            }
+//                print(userData)
+            let userInfo = userData["key"]
+            print(userInfo as! [String: AnyObject])
+            print("Yes, we have a user!")
+
+            /* GUARD: Is there a last name in our result? */
+            if let lastName = userInfo?["last_name"] as? String {
+                print("My last name is:  \(lastName)")
+                studentLastName = lastName            }
+            else {
+                self.displayError("Cannot find last name")
+                return
+            }
+            
+
+            /* GUARD: Is there a first name in our result? */
+            if let firstName = userInfo?["first_name"] as? String {
+                print("My first name is:  \(firstName)")
+                studentFirstName = firstName
+            }
+            else {
+                self.displayError("Cannot find first name")
+                return
+            }
+            
+            /* 6. Use the data! */
+            self.completeLogin()
+            
+            /* 7. Start the request */
+
+        }
+        task.resume()
+    }
+
 }
     // MARK: - LoginViewController: UITextFieldDelegate
     
@@ -262,6 +329,21 @@ class LoginViewController: UIViewController {
         textField.tintColor = UdacityClient.UI.BlueColor
         textField.delegate = self
     }
+        
+        // MARK:  Error Checking
+        // if an error occurs, pop up an alert view and re-enable the UI
+        public func displayError(_ error: String) {
+            
+            let nextController = UIAlertController()
+            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
+            
+            nextController.addAction(okAction)
+            
+            self.present(nextController, animated:  true, completion:nil)
+            performUIUpdatesOnMain {
+                self.setUIEnabled(true)
+            }
+        }
 }
 
 // MARK: - LoginViewController (Notifications)

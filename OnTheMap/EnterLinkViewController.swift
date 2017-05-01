@@ -56,12 +56,8 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         }
         task.resume()
 
-        // TODO:  Refresh Data
-        
         // TODO:  Return to Map/Table View
         self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: {})
-//        self.dismiss(animated: true, completion: {})
-//        self.presentingViewController?.dismiss(animated: true, completion: {})
     }
     
     @IBOutlet weak var mapView: MKMapView!

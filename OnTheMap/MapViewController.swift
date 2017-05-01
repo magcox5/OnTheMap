@@ -44,7 +44,7 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                print("There was an error with your request: \(String(describing: error))")
                 return
             }
             
