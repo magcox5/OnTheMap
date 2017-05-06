@@ -166,7 +166,7 @@ class LoginViewController: UIViewController {
             print("Session Id is: \(sessionID)")
             self.appDelegate.sessionID = sessionID
             self.getUdacityName(userID: studentUserID)
-            //self.completeLogin()
+            self.completeLogin()
             
             /* 7. Start the request */
         }) 
@@ -175,14 +175,16 @@ class LoginViewController: UIViewController {
     
     func getUdacityName(userID: String)
     {
+        studentFirstName = "Molly"
+        studentLastName = "Cox"
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(userID)")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error...
                 return
             }
-            let range = Range(uncheckedBounds: (5, data!.count - 5))
-            let newData = data?.subdata(in: range) /* subset response data! */
+              let range = Range(5..<data!.count)
+              let newData = data?.subdata(in: range)
             print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
 
             /* 5. Parse the data */
@@ -202,7 +204,7 @@ class LoginViewController: UIViewController {
             }
 //                print(userData)
             let userInfo = userData["key"]
-            print(userInfo as! [String: AnyObject])
+//            print(userInfo as! [String: AnyObject])
             print("Yes, we have a user!")
 
             /* GUARD: Is there a last name in our result? */
@@ -232,7 +234,7 @@ class LoginViewController: UIViewController {
 
         }
         task.resume()
-    }
+      }
 
 }
     // MARK: - LoginViewController: UITextFieldDelegate
