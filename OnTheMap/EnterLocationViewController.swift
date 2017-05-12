@@ -77,6 +77,9 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         self.studentFirstName.delegate = self
         self.studentLastName.delegate = self
         self.studyLocation.delegate = self
+
+        self.studentLastName.text = udacityLastName
+        self.studentFirstName.text = udacityFirstName
         
         self.navigationItem.title = "On The Map:  Enter Location"
         navigationController?.navigationBar.barTintColor = UIColor.white

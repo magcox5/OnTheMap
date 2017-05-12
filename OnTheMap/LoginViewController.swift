@@ -10,9 +10,9 @@ import UIKit
 import Foundation
 
 // Global Variable
-var studentUserID: String = ""
-var studentFirstName: String = ""
-var studentLastName: String = ""
+var udacityUserID: String = ""
+var udacityFirstName: String = ""
+var udacityLastName: String = ""
 
 class LoginViewController: UIViewController {
 
@@ -155,7 +155,7 @@ class LoginViewController: UIViewController {
                 print(userData)
                 let userID = userData["key"]
                 print("My user id is:  \(userID!)")
-                studentUserID = userID as! String
+                udacityUserID = userID as! String
             }
             else {
                 self.displayError("Cannot find userID in \(parsedResult!)")
@@ -165,7 +165,7 @@ class LoginViewController: UIViewController {
             /* 6. Use the data! */
             print("Session Id is: \(sessionID)")
             self.appDelegate.sessionID = sessionID
-            self.getUdacityName(userID: studentUserID)
+            self.getUdacityName(userID: udacityUserID)
             self.completeLogin()
             
             /* 7. Start the request */
@@ -175,8 +175,6 @@ class LoginViewController: UIViewController {
     
     func getUdacityName(userID: String)
     {
-        studentFirstName = "Molly"
-        studentLastName = "Cox"
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(userID)")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
@@ -202,15 +200,12 @@ class LoginViewController: UIViewController {
                 self.displayError("Cannot find 'user' in \(parsedResult)")
                 return
             }
-//                print(userData)
-            let userInfo = userData["key"]
-//            print(userInfo as! [String: AnyObject])
             print("Yes, we have a user!")
 
             /* GUARD: Is there a last name in our result? */
-            if let lastName = userInfo?["last_name"] as? String {
+            if let lastName = userData["last_name"] as? String {
                 print("My last name is:  \(lastName)")
-                studentLastName = lastName            }
+                udacityLastName = lastName            }
             else {
                 self.displayError("Cannot find last name")
                 return
@@ -218,9 +213,9 @@ class LoginViewController: UIViewController {
             
 
             /* GUARD: Is there a first name in our result? */
-            if let firstName = userInfo?["first_name"] as? String {
+            if let firstName = userData["first_name"] as? String {
                 print("My first name is:  \(firstName)")
-                studentFirstName = firstName
+                udacityFirstName = firstName
             }
             else {
                 self.displayError("Cannot find first name")

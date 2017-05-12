@@ -17,6 +17,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     var newStudentLocation: CLLocation?
     var firstName: String = ""
     var lastName: String = ""
+    var userID: String = ""
     var mapString: String = ""
 
     @IBOutlet weak var studentURL: UITextField!
@@ -38,14 +39,14 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        studentUserID = "\"\(studentUserID)\""
+        userID = "\"\(udacityUserID)\""
         firstName = "\"\(firstName)\""
         lastName = "\"\(lastName)\""
         mapString = "\"\(mapString)\""
         var newStudentURL = studentURL!.text!
         newStudentURL = "\"\(newStudentURL)\""
-        let requestTest = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
-        request.httpBody = "{\"uniqueKey\": \(studentUserID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
+        let requestTest = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
+        request.httpBody = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
         print(requestTest)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
