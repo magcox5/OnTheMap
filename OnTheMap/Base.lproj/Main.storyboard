@@ -77,6 +77,11 @@
                                     <action selector="signUpButton:" destination="IIa-CI-etf" eventType="touchUpInside" id="TxM-dE-hA5"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-We-0cS">
+                                <rect key="frame" x="177" y="186" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -108,6 +113,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="attemptingLogin" destination="dcd-We-0cS" id="WnE-7c-Ed8"/>
                         <outlet property="debugLabel" destination="G4z-3B-fhH" id="vf6-RW-ofJ"/>
                         <outlet property="loginButton" destination="kKL-wr-LAm" id="sTV-yk-DYD"/>
                         <outlet property="passwordTextField" destination="dzc-AE-Sr9" id="4h2-j1-nXP"/>

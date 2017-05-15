@@ -17,6 +17,7 @@ var udacityLastName: String = ""
 class LoginViewController: UIViewController {
 
     // MARK: Properties
+    @IBOutlet weak var attemptingLogin: UIActivityIndicatorView!
     
     var appDelegate: AppDelegate!
     var keyboardOnScreen = false
@@ -65,7 +66,9 @@ class LoginViewController: UIViewController {
             debugLabel.text = "Username or Password Empty."
         } else {
             setUIEnabled(false)
-            
+            attemptingLogin.isHidden = false
+            attemptingLogin.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+            attemptingLogin.startAnimating()
             getSessionID(username: usernameTextField.text!, password: passwordTextField.text!)
         }
         
@@ -75,7 +78,7 @@ class LoginViewController: UIViewController {
         performUIUpdatesOnMain {
             self.debugLabel.text = ""
             self.setUIEnabled(true)
-            
+            self.attemptingLogin.isHidden = true
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as! UINavigationController
             self.present(controller, animated: true, completion: nil)
         }
@@ -314,6 +317,8 @@ class LoginViewController: UIViewController {
         
         configureTextField(usernameTextField!)
         configureTextField(passwordTextField!)
+        
+        attemptingLogin.isHidden = true
     }
     
     fileprivate func configureTextField(_ textField: UITextField) {
