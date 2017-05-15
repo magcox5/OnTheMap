@@ -437,21 +437,21 @@
             <objects>
                 <tabBarController id="gu0-EF-doC" customClass="MapTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="Xun-X4-wJT">
-                        <barButtonItem key="leftBarButtonItem" image="mapPin" id="1jD-Fj-LyK">
+                        <barButtonItem key="leftBarButtonItem" image="logout" id="k1P-im-M35">
                             <connections>
-                                <action selector="addPin:" destination="gu0-EF-doC" id="2E4-va-e2S"/>
-                                <segue destination="hSP-XN-avP" kind="presentation" id="6Ty-55-Yam"/>
+                                <action selector="exitProgram:" destination="gu0-EF-doC" id="Z7J-GJ-5K7"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="logout" id="k1P-im-M35">
-                                <connections>
-                                    <action selector="exitProgram:" destination="gu0-EF-doC" id="Z7J-GJ-5K7"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem systemItem="refresh" id="l2B-Rh-6DI">
                                 <connections>
                                     <action selector="refreshPins:" destination="gu0-EF-doC" id="1Ol-4J-gAX"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="mapPin" id="1jD-Fj-LyK">
+                                <connections>
+                                    <action selector="addPin:" destination="gu0-EF-doC" id="2E4-va-e2S"/>
+                                    <segue destination="hSP-XN-avP" kind="presentation" id="6Ty-55-Yam"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -468,7 +468,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jN2-Hx-TsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-250" y="-3180"/>
+            <point key="canvasLocation" x="-84" y="-3269"/>
         </scene>
     </scenes>
     <resources>
