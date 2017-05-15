@@ -15,6 +15,9 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
  
 //    @IBOutlet weak var studentFirstName: UITextField!
 //    @IBOutlet weak var studentLastName: UITextField!
+    
+    @IBOutlet weak var findingLocation: UIActivityIndicatorView!
+    
     @IBOutlet weak var studyLocation: UITextField!
     
     // MARK:  Actions
@@ -24,12 +27,18 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findStudyLocation(_ sender: Any) {
 
+        findingLocation.isHidden = false
+        findingLocation.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        findingLocation.startAnimating()
         let locationToFind =  studyLocation.text
         let geoCoder = CLGeocoder()
         
         // MARK:  Error Checking
         // if an error occurs, pop up an alert view and re-enable the UI
         func displayError(_ error: String) {
+            performUIUpdatesOnMain {
+                self.findingLocation.isHidden = true
+            }
             let nextController = UIAlertController()
             let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default)
             nextController.addAction(okAction)
@@ -46,6 +55,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         geoCoder.geocodeAddressString(locationToFind!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 displayError("Unable to find that location... please try again")
+//                self.findingLocation.isHidden = true
                 print("Error", error as Any)
             }
             if let placemark = placemarks?.first {
@@ -56,6 +66,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                 let newLocation = CLLocation(latitude: newLatitude, longitude: newLongitude)
 
                 DispatchQueue.main.async {
+                    self.findingLocation.isHidden = false
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
@@ -85,7 +96,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.title = "On The Map:  Enter Location"
         navigationController?.navigationBar.barTintColor = UIColor.white
-//        self.navigationItem.title.color = .White
+        findingLocation.isHidden = true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

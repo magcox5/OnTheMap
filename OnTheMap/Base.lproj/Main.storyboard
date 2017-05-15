@@ -252,6 +252,10 @@
                                     <action selector="findStudyLocation:" destination="hSP-XN-avP" eventType="touchUpInside" id="p3R-07-kO6"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="hFU-dR-6ws">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -274,6 +278,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="findingLocation" destination="hFU-dR-6ws" id="97R-45-xPS"/>
                         <outlet property="studyLocation" destination="Wkj-ZA-E8u" id="QS3-K0-CPU"/>
                     </connections>
                 </viewController>

@@ -344,6 +344,7 @@ class LoginViewController: UIViewController {
             self.present(nextController, animated:  true, completion:nil)
             performUIUpdatesOnMain {
                 self.setUIEnabled(true)
+                self.attemptingLogin.isHidden = true
             }
         }
 }
