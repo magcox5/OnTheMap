@@ -17,10 +17,12 @@ class UdacityClient : NSObject {
     var session = URLSession.shared
     
     // authentication state
-    var sessionID : String? = nil
+    var sessionID : String? = ""
     
-    // user id info.
-    var userID : String? = nil
+    // Info. from Udacity database
+    var userID : String? = ""
+    var firstName: String? = ""
+    var lastName: String? = ""
     
     // MARK: Initializers
     

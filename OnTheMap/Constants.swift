@@ -25,7 +25,7 @@ extension UdacityClient {
         static let ApiHost = "parse.udacity.com"
         static let ApiPath = "/parse/classes"
         static let ApiSearch = "/StudentLocation?limit=100&order=-updatedAt"
-        
+        static let signupURL = "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated"
         // MARK:  HTTP Header Fields
         static let httpHeaderApiKey = "X-Parse-REST-API-Key"
         static let httpHeaderAppID = "X-Parse-Application-Id"
@@ -81,10 +81,6 @@ extension UdacityClient {
         
         // MARK: Account
         static let UserID = "id"
-        
-        // MARK: Config
-        static let ConfigBaseImageURL = "base_url"
-        static let ConfigSecureBaseImageURL = "secure_base_url"
         
         // MARK: Student Location
         static let StudentLocationID = "objectId"

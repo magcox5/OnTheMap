@@ -24,17 +24,15 @@ class LoginViewController: UIViewController {
     
     // MARK:  Outlets
     @IBOutlet weak var usernameTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: BorderedButton!
-    
-    @IBAction func signUpButton(_ sender: Any) {
-        
-//    UIApplication.shared.openURL(NSURL(string: "https://auth.udacity.com/sign-up")! as URL)
-        UIApplication.shared.open(NSURL(string: "https://auth.udacity.com/sign-up")! as URL, options: [:], completionHandler: nil)    }
-    
     @IBOutlet weak var debugLabel: UILabel!
     
+    
+    @IBAction func signUpButton(_ sender: Any) {
+        UIApplication.shared.open(NSURL(string: UdacityClient.Constants.signupURL)! as URL, options: [:], completionHandler: nil)    }
+    
+
     // MARK: Life Cycle
     
     override func viewDidLoad() {
