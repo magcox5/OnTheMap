@@ -10,7 +10,9 @@ import UIKit
 import CoreLocation
 
 class EnterLocationViewController: UIViewController, UITextFieldDelegate {
-    
+
+    // MARK:  Variables
+    var udacityClient: UdacityClient!
     // MARK:  Outlets
  
 //    @IBOutlet weak var studentFirstName: UITextField!
@@ -70,8 +72,8 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
-                    enterLinkVC.firstName = udacityFirstName
-                    enterLinkVC.lastName = udacityLastName
+                    enterLinkVC.firstName = self.udacityClient.udacityFirstName
+                    enterLinkVC.lastName = self.udacityClient.udacityLastName
 //                    enterLinkVC.firstName = self.studentFirstName.text!
 //                    enterLinkVC.lastName = self.studentLastName.text!
                     enterLinkVC.mapString = self.studyLocation.text!

@@ -12,6 +12,12 @@ import Foundation
 class UdacityClient : NSObject {
     
     // MARK: Properties
+
+    var appDelegate: AppDelegate!
+
+    var udacityUserID: String = ""
+    var udacityFirstName: String = ""
+    var udacityLastName: String = ""
     
     // shared session
     var session = URLSession.shared
@@ -20,9 +26,9 @@ class UdacityClient : NSObject {
     var sessionID : String? = ""
     
     // Info. from Udacity database
-    var userID : String? = ""
-    var firstName: String? = ""
-    var lastName: String? = ""
+//    var userID : String? = ""
+//    var firstName: String? = ""
+//    var lastName: String? = ""
     
     // MARK: Initializers
     

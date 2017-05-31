@@ -14,6 +14,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
 
     // MARK:  Variables
 
+    var udacityClient: UdacityClient!
     var newStudentLocation: CLLocation?
     var firstName: String = ""
     var lastName: String = ""
@@ -39,7 +40,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        userID = "\"\(udacityUserID)\""
+        userID = "\"\(self.udacityClient.udacityUserID)\""
         firstName = "\"\(firstName)\""
         lastName = "\"\(lastName)\""
         mapString = "\"\(mapString)\""
