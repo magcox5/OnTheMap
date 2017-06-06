@@ -59,43 +59,8 @@ extension UdacityClient {
     struct ParameterKeys {
         static let ApiKey = "api_key"
         static let SessionID = "id"
-        static let RequestToken = "request_token"
-        static let Query = "query"
     }
     
-    // MARK: JSON Body Keys
-    struct JSONBodyKeys {
-        static let MediaType = "media_type"
-        static let MediaID = "media_id"
-        static let Favorite = "favorite"
-        static let Watchlist = "watchlist"
-    }
-    
-    // MARK: JSON Response Keys
-    struct JSONResponseKeys {
-        
-        // MARK: General
-        static let StatusMessage = "status_message"
-        static let StatusCode = "status_code"
-        
-        // MARK: Authorization
-        static let SessionID = "id"
-        
-        // MARK: Account
-        static let UserID = "id"
-        
-        // MARK: Student Location
-        static let StudentLocationID = "objectId"
-        static let StudentID = "uniqueKey"
-        static let StudentFirstName = "firstName"
-        static let StudentLastName = "lastName"
-        static let StudentLocationMapString = "mapString"
-        static let StudentLocationMediaURL = "mediaURL"
-        static let StudentLocationLatitude = "latitude"
-        static let StudentLocationLongitude = "longitude"
-        
-        
-    }
     
     // MARK: UI
     struct UI {
