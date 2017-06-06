@@ -22,8 +22,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: BorderedButton!
-    @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
     
+    @IBOutlet weak var debugLabel: UILabel!
     
     @IBAction func signUpButton(_ sender: Any) {
         UIApplication.shared.open(NSURL(string: UdacityClient.Constants.signupURL)! as URL, options: [:], completionHandler: nil)    }
@@ -63,7 +64,7 @@ class LoginViewController: UIViewController {
             attemptingLogin.isHidden = false
             attemptingLogin.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
             attemptingLogin.startAnimating()
-            UdacityClient.sharedInstance().authenticateWithViewController(self, userName: usernameTextField.text!, password: passwordTextField.text!) { (success, errorString) in
+            UdacityClient.sharedInstance().authenticateWithViewController(self, userName: usernameTextField.text!, password: passwordTextField.text!, completionHandlerForAuth: { (success, errorString) in
                 performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()
@@ -71,11 +72,8 @@ class LoginViewController: UIViewController {
                         self.displayError(errorString!)
                     }
                 }
-            }
-
-            
+            })
         }
-        
     }
     
     fileprivate func completeLogin() {

@@ -13,6 +13,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
 
     // MARK:  Variables
     var udacityClient: UdacityClient!
+    var appDelegate:  AppDelegate!
     // MARK:  Outlets
  
 //    @IBOutlet weak var studentFirstName: UITextField!
@@ -47,17 +48,9 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             self.present(nextController, animated:  true, completion:nil)
         }
 
-        // Check to make sure name field has data
-//        if studentLastName.text == "" {
-//            displayError("Please enter a last name")
-//        } else if studentFirstName.text == "" {
-//            displayError("Please enter a first name")
-//        } else
-//        {
         geoCoder.geocodeAddressString(locationToFind!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 displayError("Unable to find that location... please try again")
-//                self.findingLocation.isHidden = true
                 print("Error", error as Any)
             }
             if let placemark = placemarks?.first {
@@ -72,10 +65,8 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
-                    enterLinkVC.firstName = self.udacityClient.udacityFirstName
-                    enterLinkVC.lastName = self.udacityClient.udacityLastName
-//                    enterLinkVC.firstName = self.studentFirstName.text!
-//                    enterLinkVC.lastName = self.studentLastName.text!
+                    enterLinkVC.firstName = self.appDelegate.udacityFirstName
+                    enterLinkVC.lastName = self.appDelegate.udacityLastName
                     enterLinkVC.mapString = self.studyLocation.text!
                     self.present(enterLinkVC, animated: true, completion: nil)
                 }
@@ -83,19 +74,15 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
             }
         })
         
-//    }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.studentFirstName.delegate = self
-//        self.studentLastName.delegate = self
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+
         self.studyLocation.delegate = self
 
-//        self.studentLastName.text = udacityLastName
-//        self.studentFirstName.text = udacityFirstName
-        
         self.navigationItem.title = "On The Map:  Enter Location"
         navigationController?.navigationBar.barTintColor = UIColor.white
         findingLocation.isHidden = true

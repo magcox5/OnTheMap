@@ -20,7 +20,8 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     var lastName: String = ""
     var userID: String = ""
     var mapString: String = ""
-
+    var appDelegate:  AppDelegate!
+    
     @IBOutlet weak var studentURL: UITextField!
     
     let regionRadius: CLLocationDistance = 1000
@@ -40,15 +41,15 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        userID = "\"\(self.udacityClient.udacityUserID)\""
-        firstName = "\"\(firstName)\""
-        lastName = "\"\(lastName)\""
+        userID = "\"\(self.appDelegate.udacityUserID)\""
+        firstName = "\"\(self.appDelegate.udacityFirstName)\""
+        lastName = "\"\(self.appDelegate.udacityLastName)\""
         mapString = "\"\(mapString)\""
         var newStudentURL = studentURL!.text!
         newStudentURL = "\"\(newStudentURL)\""
-        let requestTest = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
+//        let requestTest = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
         request.httpBody = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
-        print(requestTest)
+//        print(requestTest)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error…
@@ -66,6 +67,8 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         // Do any additional setup after loading the view.
         self.studentURL.delegate = self

@@ -34,7 +34,7 @@ class MapTabBarController:  UITabBarController {
     @IBAction func exitProgram(_ sender: Any) {
         
         // MARK:  Logout of the Udacity Parse database
-        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        let request = NSMutableURLRequest(url: URL(string: UdacityClient.Constants.UdacityURL)!)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared

@@ -12,29 +12,24 @@ import Foundation
 class UdacityClient : NSObject {
     
     // MARK: Properties
-
     var appDelegate: AppDelegate!
 
-    var udacityUserID: String = ""
-    var udacityFirstName: String = ""
-    var udacityLastName: String = ""
-    
-    // shared session
-    var session = URLSession.shared
-    
-    // authentication state
-    var sessionID : String? = ""
-    
-    // Info. from Udacity database
-//    var userID : String? = ""
-//    var firstName: String? = ""
-//    var lastName: String? = ""
-    
-    // MARK: Initializers
-    
-    override init() {
-        super.init()
-    }
+//
+//    var udacityUserID: String = ""
+//    var udacityFirstName: String = ""
+//    var udacityLastName: String = ""
+//    
+//    // shared session
+//    var session = URLSession.shared
+//    
+//    // authentication state
+//    var sessionID : String? = ""
+//    
+//    // MARK: Initializers
+//    
+//    override init() {
+//        super.init()
+//    }
     // MARK: GET
     
     func taskForGETMethod(method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
@@ -47,7 +42,7 @@ class UdacityClient : NSObject {
         let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters: parametersWithApiKey, withPathExtension: method) as URL)
         
         /* 4. Make the request */
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+        let task = self.appDelegate.session.dataTask(with: request as URLRequest, completionHandler:  { (data, response, error) in
             
             func sendError(error: String) {
                 print(error)
@@ -61,13 +56,6 @@ class UdacityClient : NSObject {
                 return
             }
             
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print(response!)
-                sendError(error: "Your request returned a status code other than 2xx!")
-                return
-            }
-            
             /* GUARD: Was there any data returned? */
             guard let data = data else {
                 sendError(error: "No data was returned by the request!")
@@ -76,7 +64,7 @@ class UdacityClient : NSObject {
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(data: data as NSData, completionHandlerForConvertData: completionHandlerForGET)
-        }
+        })
         
         /* 7. Start the request */
         task.resume()
@@ -93,14 +81,16 @@ class UdacityClient : NSObject {
         parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey as AnyObject?
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters: parametersWithApiKey, withPathExtension: method) as URL)
+//        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters: parametersWithApiKey, withPathExtension: method) as URL)
+        let request = NSMutableURLRequest(url: NSURL(string: Constants.UdacityURL)! as URL)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
         
         /* 4. Make the request */
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+        
+        let task = self.appDelegate.session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             
             func sendError(error: String) {
                 print(error)
@@ -113,16 +103,22 @@ class UdacityClient : NSObject {
                 sendError(error: "There was an error with your request: \(String(describing: error))")
                 return
             }
-            
+
+
             /* GUARD: Was there any data returned? */
-            guard let data = data else {
+            if let data = data {
+                print("The raw data is...\(data)")
+                print("The response is...\(String(describing: response))")
+                print("The error is...\(String(describing: error))")
+                
+            } else {
                 sendError(error: "No data was returned by the request!")
                 return
             }
-            
+            completionHandlerForPOST(data as AnyObject?, nil)
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data: data as NSData, completionHandlerForConvertData: completionHandlerForPOST)
-        }
+//            self.convertDataWithCompletionHandler(data: data as NSData, completionHandlerForConvertData: completionHandlerForPOST)
+        })
         
         /* 7. Start the request */
         task.resume()

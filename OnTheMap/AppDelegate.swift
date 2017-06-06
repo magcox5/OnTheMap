@@ -14,10 +14,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Properties
     
-    var window: UIWindow?
+    var udacityUserID: String = ""
+    var udacityFirstName: String = ""
+    var udacityLastName: String = ""
     
-    var sharedSession = URLSession.shared
-    var sessionID: String = ""
+    // shared session
+    var session = URLSession.shared
+    
+    // authentication state
+    var sessionID : String? = ""
+    
+    // MARK: Initializers
+    
+    override init() {
+        super.init()
+    }
+
+    
+    var window: UIWindow?
+
+    // MARK: UIApplicationDelegate
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        return true
+    }
+
+//    var sharedSession = URLSession.shared
+//    var sessionID: String = ""
 
 }
 
