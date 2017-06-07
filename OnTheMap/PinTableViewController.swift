@@ -49,23 +49,15 @@ class PinTableViewController: UITableViewController {
 
         let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
 
-//        let pinDetailName = currentPin.firstName.trimmingCharacters(in: .whitespaces) + " " + currentPin.lastName.trimmingCharacters(in: .whitespaces)
-        
         UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
-        
-        //let okController = UIAlertController(title: pinDetailName, message: currentPin.mediaURL, preferredStyle: .alert)
-
-        //okController.addAction(UIAlertAction(title: "OK", style: .default))
-
-        //present(okController, animated: true)
-
 }
     
     private func getStudentLocations() {
+        //        let test = UdacityClient.Constants.ApiScheme
+        let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiSearch)")! as URL)
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")! as URL)
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
+        request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             /* GUARD: Was there an error? */
@@ -96,8 +88,8 @@ class PinTableViewController: UITableViewController {
                 self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
             }
             // Switch to Main Queue to display pins on map
- //           DispatchQueue.main.async {
- //               self.displayStudentLocations()
+//            DispatchQueue.main.async {
+//                self.displayStudentLocations()
 //            }
         }
         task.resume()
