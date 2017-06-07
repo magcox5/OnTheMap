@@ -20,17 +20,23 @@ extension UdacityClient {
         // MARK: API Key
         static let AppID : String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         
+        // MARK:  Content-Type
+        static let ContentType: String = "application/json"
+        
         // MARK: URLs
         static let ApiScheme = "https://"
         static let ApiHost = "parse.udacity.com"
         static let ApiPath = "/parse/classes"
         static let ApiSearch = "/StudentLocation?limit=100&order=-updatedAt"
+        static let ApiStudent = "/StudentLocation"
         static let signupURL = "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated"
         static let UdacityURL = "https://www.udacity.com/api/session"
         
         // MARK:  HTTP Header Fields
         static let httpHeaderApiKey = "X-Parse-REST-API-Key"
         static let httpHeaderAppID = "X-Parse-Application-Id"
+        static let httpHeaderContentType = "Content-Type"
+        
         
     }
     

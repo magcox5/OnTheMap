@@ -28,18 +28,16 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
 
     @IBAction func cancelAddPin(_ sender: Any) {
         self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: {})
-
-        // self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveStudentLocation(_ sender: Any) {
         // TODO:  Post data to database
-        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiStudent)")! as URL)
         request.httpMethod = "POST"
-    request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-    request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
+        request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
         
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(UdacityClient.Constants.ContentType, forHTTPHeaderField: UdacityClient.Constants.httpHeaderContentType)
         
         userID = "\"\(self.appDelegate.udacityUserID)\""
         firstName = "\"\(self.appDelegate.udacityFirstName)\""
@@ -47,9 +45,7 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         mapString = "\"\(mapString)\""
         var newStudentURL = studentURL!.text!
         newStudentURL = "\"\(newStudentURL)\""
-//        let requestTest = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}"
         request.httpBody = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
-//        print(requestTest)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error…
