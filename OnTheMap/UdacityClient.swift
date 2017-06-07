@@ -19,7 +19,6 @@ class UdacityClient : NSObject {
     {
         /* 1. Set the parameters */
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        //            let parameters = [UdacityClient.ParameterKeys.ApiKey: UdacityClient.Constants.ApiKey]
         /* 2/3. Build the URL, Configure the request */
         var request = URLRequest(url: NSURL(string: UdacityClient.Constants.UdacityURL)! as URL)
         request.httpMethod = "POST"

@@ -31,28 +31,7 @@ extension UdacityClient {
         // MARK:  HTTP Header Fields
         static let httpHeaderApiKey = "X-Parse-REST-API-Key"
         static let httpHeaderAppID = "X-Parse-Application-Id"
-    }
-    
-    // MARK: Methods
-    struct Methods {
         
-        // MARK: Account - Do I need this?
-        
-        // MARK: Authentication - Do I need this?
-        static let AuthenticationTokenNew = "/authentication/token/new"
-        static let AuthenticationSessionNew = "/authentication/session/new"
-        
-        // MARK: Search
-        static let LocateStudents = "/StudentLocation"
-        
-        // MARK: Config - Do I need this?
-        static let Config = "/configuration"
-        
-    }
-    
-    // MARK: URL Keys - Do I need this?
-    struct URLKeys {
-        static let UserID = "id"
     }
     
     // MARK: Parameter Keys
