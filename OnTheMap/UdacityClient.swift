@@ -60,7 +60,42 @@ class UdacityClient : NSObject {
         
     }
     
-    
+    func getUserDetails(userID: String, completionHandlerForUserDetails: @escaping (_ success: Bool, _ userDetails: [String: AnyObject], _ errorString: String?) -> Void)
+    {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(userID)")!)
+        
+        let task = self.appDelegate.session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error...
+                completionHandlerForUserDetails(false, ["":"" as AnyObject], (error as! String))
+                return
+            }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range)
+            /* 5. Parse the data */
+            let parsedResult: [String: AnyObject]
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! [String: AnyObject]
+            } catch {
+                completionHandlerForUserDetails(false, ["":"" as AnyObject], "Could not parse udacity user data as JSON")
+                return
+            }
+            
+            /* GUARD: Is there a user in our result? */
+            guard let userData = parsedResult["user"] as? [String: AnyObject]
+                else {
+                    completionHandlerForUserDetails(false, ["":"" as AnyObject], "Cannot find 'user' in \(parsedResult)")
+                    return
+            }
+            completionHandlerForUserDetails(true, userData, nil)
+            return
+            
+        }
+        /* 7. Start the request */
+        task.resume()
+        
+        
+    }
+
     // MARK: Shared Instance
     
     class func sharedInstance() -> UdacityClient {
