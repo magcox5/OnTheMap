@@ -13,7 +13,7 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     
     // MARK:  Variables
 
-    let studentLocations = StudentArray.sharedInstance
+    var studentLocations = StudentArray.sharedInstance
     
     @IBOutlet weak var mapView: MKMapView!
  
@@ -27,13 +27,22 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         // Get the student locations to populate the map
-        getStudentLocations()
+        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+            { (success, studentLocations, errorString) in
+                if success {
+                    // Switch to Main Queue to display pins on map
+                    DispatchQueue.main.async {
+                        self.displayStudentLocations()
+                    }
+                }else {
+                    print(errorString!)
+                }
+            })
     }
 
     private func getStudentLocations() {
-//        let test = UdacityClient.Constants.ApiScheme
         let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiSearch)")! as URL)
 
         request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
@@ -148,7 +157,17 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         }
     
     func refreshMap(){
-        getStudentLocations()
+        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+            { (success, studentLocations, errorString) in
+                if success {
+                    // Switch to Main Queue to display pins on map
+                    DispatchQueue.main.async {
+                        self.displayStudentLocations()
+                    }
+                }else {
+                    print(errorString!)
+                }
+        })
     }
 
 }
