@@ -51,6 +51,5 @@ func getStudentLocations(studentLocations: StudentArray!, completionHandlerForSt
     }
     task.resume()
     
-//    completionHandlerForStudentLocations(true, studentLocations, nil)
     return
 }

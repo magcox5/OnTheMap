@@ -48,10 +48,14 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         request.httpBody = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
+                // Handle error…
+                    let nextController = UIAlertController()
+                    let okAction = UIAlertAction(title: "Error: \(String(describing: error))", style: UIAlertActionStyle.default)
+                    nextController.addAction(okAction)
+                    self.present(nextController, animated:  true, completion:nil)
                 return
             }
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
         }
         task.resume()
 
