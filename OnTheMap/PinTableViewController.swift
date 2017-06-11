@@ -62,13 +62,13 @@ class PinTableViewController: UITableViewController {
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(String(describing: error))")
+                self.displayError(errorString: "There was an error with your request: \(String(describing: error))")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                print("No data was returned by the request!")
+                self.displayError(errorString: "No data was returned by the request!")
                 return
             }
             
@@ -77,7 +77,7 @@ class PinTableViewController: UITableViewController {
             do {
                 parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             } catch {
-                print("Could not parse the data as JSON: '\(data)'")
+                self.displayError(errorString: "Could not parse the data as JSON: '\(data)'")
                 return
             }
             
@@ -99,5 +99,14 @@ class PinTableViewController: UITableViewController {
     func refreshTable() {
         getStudentLocations()
     }
+    
+    private func displayError(errorString: String) {
+        let nextController = UIAlertController()
+        let okAction = UIAlertAction(title: "Error: \(String(describing: errorString))", style: UIAlertActionStyle.default)
+        nextController.addAction(okAction)
+        self.present(nextController, animated:  true, completion:nil)
+    }
+    
+
     
 }

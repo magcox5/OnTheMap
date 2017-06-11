@@ -62,8 +62,6 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
-//                    enterLinkVC.firstName = self.appDelegate.udacityFirstName
-//                    enterLinkVC.lastName = self.appDelegate.udacityLastName
                     enterLinkVC.mapString = self.studyLocation.text!
                     self.present(enterLinkVC, animated: true, completion: nil)
                 }
