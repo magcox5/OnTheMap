@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-//func getSessionID(parsedResult: AnyObject!, completionHandlerForSessionID: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) ->Void)
+
 func getStudentLocations(studentLocations: StudentArray!, completionHandlerForStudentLocations: @escaping (_ success: Bool, _ studentLocations: StudentArray?, _ errorString: String?) -> Void) {
     let studentLocations = StudentArray.sharedInstance
     let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiSearch)")! as URL)

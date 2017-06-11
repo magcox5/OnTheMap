@@ -78,7 +78,10 @@ class LoginViewController: UIViewController {
     
     fileprivate func completeLogin() {
         performUIUpdatesOnMain {
+            // Clear debugLabel and username/password textfields
             self.debugLabel.text = ""
+            self.usernameTextField.text = ""
+            self.passwordTextField.text = ""
             self.setUIEnabled(true)
             self.attemptingLogin.isHidden = true
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as! UINavigationController

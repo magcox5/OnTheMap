@@ -42,50 +42,6 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
             })
     }
 
-    private func getStudentLocations() {
-        let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiSearch)")! as URL)
-
-        request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
-        request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                print("There was an error with your request: \(String(describing: error))")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                print("No data was returned by the request!")
-                return
-            }
-            
-            /* 5. Parse the data */
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-            } catch {
-                print("Could not parse the data as JSON: '\(data)'")
-                return
-            }
-           
-            /* 6. Parse the data for Result */
-            if let pinResults = parsedResult["results"] {
-                print(pinResults!)
-                // Store student locations in data structure
-                self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
-            }
-            // Switch to Main Queue to display pins on map
-            DispatchQueue.main.async {
-                self.displayStudentLocations()
-            }
-        }
-        task.resume()
-
-    }
-    
-    
     private func displayStudentLocations() {
         var annotations = [MKPointAnnotation]()
         let locations = self.studentLocations.thisStudentArray
