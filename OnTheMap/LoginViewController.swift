@@ -69,7 +69,12 @@ class LoginViewController: UIViewController {
                     if success {
                         self.completeLogin()
                     } else {
-                        self.displayError(errorString!)
+                        self.displayError(errorString: errorString!)
+                        performUIUpdatesOnMain {
+                            self.setUIEnabled(true)
+                            self.attemptingLogin.isHidden = true
+                        }
+
                     }
                 }
             })
@@ -189,19 +194,19 @@ class LoginViewController: UIViewController {
  
         // MARK:  Error Checking
         // if an error occurs, pop up an alert view and re-enable the UI
-        public func displayError(_ error: String) {
-            
-            let nextController = UIAlertController()
-            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
-            
-            nextController.addAction(okAction)
-            
-            self.present(nextController, animated:  true, completion:nil)
-            performUIUpdatesOnMain {
-                self.setUIEnabled(true)
-                self.attemptingLogin.isHidden = true
-            }
-        }
+//        public func displayError(_ error: String) {
+//            
+//            let nextController = UIAlertController()
+//            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default){ action in self.dismiss(animated: true, completion: nil)}
+//            
+//            nextController.addAction(okAction)
+//            
+//            self.present(nextController, animated:  true, completion:nil)
+//            performUIUpdatesOnMain {
+//                self.setUIEnabled(true)
+//                self.attemptingLogin.isHidden = true
+//            }
+//        }
         
 }
 

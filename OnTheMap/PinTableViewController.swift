@@ -87,10 +87,6 @@ class PinTableViewController: UITableViewController {
                 // Store student locations in data structure
                 self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
             }
-            // Switch to Main Queue to display pins on map
-//            DispatchQueue.main.async {
-//                self.displayStudentLocations()
-//            }
         }
         task.resume()
         
@@ -100,13 +96,10 @@ class PinTableViewController: UITableViewController {
         getStudentLocations()
     }
     
-    private func displayError(errorString: String) {
-        let nextController = UIAlertController()
-        let okAction = UIAlertAction(title: "Error: \(String(describing: errorString))", style: UIAlertActionStyle.default)
-        nextController.addAction(okAction)
-        self.present(nextController, animated:  true, completion:nil)
-    }
-    
-
-    
+//    internal func displayError(errorString: String) {
+//        let nextController = UIAlertController()
+//        let okAction = UIAlertAction(title: "Error: \(String(describing: errorString))", style: UIAlertActionStyle.default)
+//        nextController.addAction(okAction)
+//        self.present(nextController, animated:  true, completion:nil)
+//    }
 }

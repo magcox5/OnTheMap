@@ -35,20 +35,23 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         
         // MARK:  Error Checking
         // if an error occurs, pop up an alert view and re-enable the UI
-        func displayError(_ error: String) {
-            performUIUpdatesOnMain {
-                self.findingLocation.isHidden = true
-            }
-            let nextController = UIAlertController()
-            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default)
-            nextController.addAction(okAction)
-            self.present(nextController, animated:  true, completion:nil)
-        }
+//        func displayError(_ error: String) {
+//            performUIUpdatesOnMain {
+//                self.findingLocation.isHidden = true
+//            }
+//        
+//            let nextController = UIAlertController()
+//            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default)
+//            nextController.addAction(okAction)
+//            self.present(nextController, animated:  true, completion:nil)
+//        }
 
         geoCoder.geocodeAddressString(locationToFind!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
-                displayError("Unable to find that location... please try again")
-                print("Error", error as Any)
+                performUIUpdatesOnMain {
+                    self.findingLocation.isHidden = true
+                }
+                self.displayError(errorString: "Unable to find that location... please try again")
             }
             if let placemark = placemarks?.first {
                 print("Location: \(locationToFind!)")
