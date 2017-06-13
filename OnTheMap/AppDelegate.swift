@@ -12,8 +12,7 @@ import MapKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    // MARK: Properties
-    
+    // MARK: Variables
     var udacityUserID: String = ""
     var udacityFirstName: String = ""
     var udacityLastName: String = ""
@@ -34,33 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     // MARK: UIApplicationDelegate
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         return true
     }
 
-//    var sharedSession = URLSession.shared
-//    var sessionID: String = ""
-
 }
-
-//// MARK: Create URL from Parameters
-//
-//extension AppDelegate {
-//    
-//    func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
-//        
-//        var components = URLComponents()
-//        components.scheme = UdacityClient.Constants.ApiScheme
-//        components.host = UdacityClient.Constants.ApiHost
-//        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
-//        components.queryItems = [URLQueryItem]()
-//        
-//        for (key, value) in parameters {
-//            let queryItem = URLQueryItem(name: key, value: "\(value)")
-//            components.queryItems!.append(queryItem)
-//        }
-//        
-//        return components.url!
-//    }
-//}

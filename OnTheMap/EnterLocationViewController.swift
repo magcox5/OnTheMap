@@ -33,19 +33,6 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         let locationToFind =  studyLocation.text
         let geoCoder = CLGeocoder()
         
-        // MARK:  Error Checking
-        // if an error occurs, pop up an alert view and re-enable the UI
-//        func displayError(_ error: String) {
-//            performUIUpdatesOnMain {
-//                self.findingLocation.isHidden = true
-//            }
-//        
-//            let nextController = UIAlertController()
-//            let okAction = UIAlertAction(title: error, style: UIAlertActionStyle.default)
-//            nextController.addAction(okAction)
-//            self.present(nextController, animated:  true, completion:nil)
-//        }
-
         geoCoder.geocodeAddressString(locationToFind!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 performUIUpdatesOnMain {
@@ -61,7 +48,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
                 let newLocation = CLLocation(latitude: newLatitude, longitude: newLongitude)
 
                 DispatchQueue.main.async {
-                    self.findingLocation.isHidden = false
+                    self.findingLocation.isHidden = true
                     let enterLinkVC = self.storyboard!.instantiateViewController(withIdentifier: "EnterLinkViewController") as!
                         EnterLinkViewController
                     enterLinkVC.newStudentLocation = newLocation
