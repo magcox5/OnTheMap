@@ -16,7 +16,7 @@ func getStudentLocations(studentLocations: StudentArray!, completionHandlerForSt
     request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
     request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
     let session = URLSession.shared
-    let task = session.dataTask(with: request as URLRequest) { data, response, error in
+    let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
         /* GUARD: Was there an error? */
  
         guard (error == nil) else {

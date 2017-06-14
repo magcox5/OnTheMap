@@ -70,7 +70,6 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         }
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
-        print("Annotations Added")
     }
 
         // MARK: - MKMapViewDelegate
@@ -126,12 +125,5 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         })
     }
     
-//    private func displayError(errorString: String) {
-//        let nextController = UIAlertController()
-//        let okAction = UIAlertAction(title: "Error: \(String(describing: errorString))", style: UIAlertActionStyle.default)
-//        nextController.addAction(okAction)
-//        self.present(nextController, animated:  true, completion:nil)
-//    }
-
 }
 

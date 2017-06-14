@@ -32,7 +32,6 @@ class UdacityClient : NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print(error as Any)
                 completionHandlerForUdacityResult(false, nil, "Login Failed (SessionID)")
                 return
             }

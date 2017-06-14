@@ -22,8 +22,18 @@ class PinTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getStudentLocations()
-        tableView.reloadData()
+        // Get the student locations to populate the map
+        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+            { (success, studentLocations, errorString) in
+                if success {
+                    // Switch to Main Queue to show table
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }else {
+                    self.displayError(errorString: errorString!)
+                }
+        })
     }
     
     
@@ -52,54 +62,17 @@ class PinTableViewController: UITableViewController {
         UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
 }
     
-    private func getStudentLocations() {
-        //        let test = UdacityClient.Constants.ApiScheme
-        let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiSearch)")! as URL)
-        
-        request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
-        request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                self.displayError(errorString: "There was an error with your request: \(String(describing: error))")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                self.displayError(errorString: "No data was returned by the request!")
-                return
-            }
-            
-            /* 5. Parse the data */
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-            } catch {
-                self.displayError(errorString: "Could not parse the data as JSON: '\(data)'")
-                return
-            }
-            
-            /* 6. Parse the data for Result */
-            if let pinResults = parsedResult["results"] {
-                print(pinResults!)
-                // Store student locations in data structure
-                self.studentLocations.thisStudentArray = StudentArray.arrayFromResults(results: pinResults as! [[String : AnyObject]])
-            }
-        }
-        task.resume()
-        
-    }
-    
     func refreshTable() {
-        getStudentLocations()
+        // Get the student locations to show table
+        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+            { (success, studentLocations, errorString) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }else {
+                    self.displayError(errorString: errorString!)
+                }
+        })
     }
-    
-//    internal func displayError(errorString: String) {
-//        let nextController = UIAlertController()
-//        let okAction = UIAlertAction(title: "Error: \(String(describing: errorString))", style: UIAlertActionStyle.default)
-//        nextController.addAction(okAction)
-//        self.present(nextController, animated:  true, completion:nil)
-//    }
 }

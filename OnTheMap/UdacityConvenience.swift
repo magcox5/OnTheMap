@@ -33,27 +33,27 @@ extension UdacityClient {
                                                         if success {
                                                             completionHandlerForAuth(true, nil)
                                                         } else {
-                                                            completionHandlerForAuth(false, "Can't get last name")
+                                                            completionHandlerForAuth(false, errorString)
                                                         }
                                                     })
                                                 } else {
-                                                    completionHandlerForAuth(false, "Can't get first name")
+                                                    completionHandlerForAuth(false, errorString)
                                                 }
                                             })
                                         } else {
-                                            completionHandlerForAuth(false, "Can't get user details")
+                                            completionHandlerForAuth(false, errorString)
                                         }
                                     })
                                 }else {
-                                    completionHandlerForAuth(false, "Can't get user id")
+                                    completionHandlerForAuth(false, errorString)
                                 }
                             })
                         } else {
-                            completionHandlerForAuth(false, "Can't get session ID")
+                            completionHandlerForAuth(false, errorString)
                         }
                     })
                 } else {
-                    completionHandlerForAuth(false, "Can't parse Udacity data as JSON")
+                    completionHandlerForAuth(false, errorString)
                 }
         })
 
