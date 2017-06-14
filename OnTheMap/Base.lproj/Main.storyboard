@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IIa-CI-etf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IIa-CI-etf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,8 +88,7 @@
                         <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="G4z-3B-fhH" firstAttribute="top" secondItem="Lc3-Bb-8pC" secondAttribute="bottom" constant="34" id="5eL-tY-sVJ"/>
-                            <constraint firstItem="Lc3-Bb-8pC" firstAttribute="top" secondItem="kKL-wr-LAm" secondAttribute="bottom" constant="19" id="7fh-24-H3n"/>
+                            <constraint firstItem="Lc3-Bb-8pC" firstAttribute="top" secondItem="kKL-wr-LAm" secondAttribute="bottom" constant="19" id="7fh-24-H3n" userLabel="Sign Up Button.top = Login Button.bottom + 20"/>
                             <constraint firstItem="kKL-wr-LAm" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="8ym-tC-aaL"/>
                             <constraint firstItem="dzc-AE-Sr9" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="Ch8-ib-eA1"/>
                             <constraint firstItem="Lc3-Bb-8pC" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="DGm-Hb-rsR"/>
@@ -97,22 +96,22 @@
                             <constraint firstItem="Aoe-2i-Uw6" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="KVS-nW-YKs"/>
                             <constraint firstItem="eAv-Rf-fb9" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="KxK-3N-fXv"/>
                             <constraint firstItem="dzc-AE-Sr9" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="OXk-XJ-H3u"/>
-                            <constraint firstItem="kKL-wr-LAm" firstAttribute="top" secondItem="dzc-AE-Sr9" secondAttribute="bottom" constant="27" id="ZL3-Bc-tW2"/>
+                            <constraint firstItem="kKL-wr-LAm" firstAttribute="top" secondItem="dzc-AE-Sr9" secondAttribute="bottom" constant="27" id="ZL3-Bc-tW2" userLabel="Login Button.top = password.bottom + 20"/>
                             <constraint firstItem="kKL-wr-LAm" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="anr-1J-mW4"/>
-                            <constraint firstItem="dcd-We-0cS" firstAttribute="top" secondItem="aWp-f9-nTr" secondAttribute="bottom" constant="8" id="bCX-B3-8sX"/>
+                            <constraint firstItem="dcd-We-0cS" firstAttribute="top" secondItem="aWp-f9-nTr" secondAttribute="bottom" constant="8" id="bCX-B3-8sX" userLabel="Attempting Login.top = username.bottom + 10"/>
                             <constraint firstItem="dcd-We-0cS" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" constant="161" id="dZq-tp-S9r"/>
                             <constraint firstAttribute="bottom" secondItem="G4z-3B-fhH" secondAttribute="bottom" constant="20" symbolic="YES" id="hFc-73-59d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dcd-We-0cS" secondAttribute="trailing" constant="162" id="inN-te-sBe"/>
-                            <constraint firstItem="eAv-Rf-fb9" firstAttribute="top" secondItem="Aoe-2i-Uw6" secondAttribute="bottom" constant="34" id="jQf-XG-XiF"/>
+                            <constraint firstItem="eAv-Rf-fb9" firstAttribute="top" secondItem="Aoe-2i-Uw6" secondAttribute="bottom" constant="34" id="jQf-XG-XiF" userLabel="mapPin.top = On The Map.bottom + 30"/>
                             <constraint firstItem="Aoe-2i-Uw6" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="lU4-l1-6dq"/>
                             <constraint firstItem="G4z-3B-fhH" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="mGB-ki-Mfc"/>
                             <constraint firstItem="Lc3-Bb-8pC" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="nOW-00-zkh"/>
-                            <constraint firstItem="aWp-f9-nTr" firstAttribute="top" secondItem="eAv-Rf-fb9" secondAttribute="bottom" constant="39" id="s0k-JK-Iyo"/>
+                            <constraint firstItem="aWp-f9-nTr" firstAttribute="top" secondItem="eAv-Rf-fb9" secondAttribute="bottom" constant="39" id="s0k-JK-Iyo" userLabel="username.top = mapPin.bottom + 30"/>
                             <constraint firstItem="G4z-3B-fhH" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="v15-SK-7E8"/>
                             <constraint firstItem="Aoe-2i-Uw6" firstAttribute="top" secondItem="pSD-3Z-JyX" secondAttribute="bottom" constant="8" id="wWp-T8-jrU"/>
                             <constraint firstItem="aWp-f9-nTr" firstAttribute="leading" secondItem="6e8-qt-yrg" secondAttribute="leadingMargin" id="wYK-Iz-A80"/>
                             <constraint firstItem="aWp-f9-nTr" firstAttribute="trailing" secondItem="6e8-qt-yrg" secondAttribute="trailingMargin" id="xts-fl-Ov2"/>
-                            <constraint firstItem="dzc-AE-Sr9" firstAttribute="top" secondItem="aWp-f9-nTr" secondAttribute="bottom" constant="23" id="yUh-cC-nhH"/>
+                            <constraint firstItem="dzc-AE-Sr9" firstAttribute="top" secondItem="aWp-f9-nTr" secondAttribute="bottom" constant="23" id="yUh-cC-nhH" userLabel="password.top = username.bottom + 20"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Kjl-Wy-HLl" appends="YES" id="WzD-ty-e9p"/>
@@ -214,8 +213,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx2-PQ-Kdj">
-                                <rect key="frame" x="16" y="95" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="16" y="95" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -238,7 +237,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City/State..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkj-ZA-E8u">
-                                <rect key="frame" x="16" y="153" width="343" height="30"/>
+                                <rect key="frame" x="16" y="147" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
