@@ -54,3 +54,9 @@ func getStudentLocations(studentLocations: StudentArray!, completionHandlerForSt
     return
 }
 
+func useableURL(thisURL: String) -> Bool {
+    if let url = URL(string: thisURL) {
+        return UIApplication.shared.canOpenURL(url)
+    }
+    return false
+}

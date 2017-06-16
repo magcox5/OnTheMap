@@ -104,8 +104,12 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             if control == view.rightCalloutAccessoryView {
                 if let toOpen = view.annotation?.subtitle! {
-                    if let url = URL(string: toOpen) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    if useableURL(thisURL: toOpen) {
+                        if let url = URL(string: toOpen) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    } else {
+                        displayError(errorString: "Looks like this isn't a valid URL...")
                     }
                 }
             }

@@ -14,11 +14,6 @@ class PinTableViewController: UITableViewController {
 
     // MARK:  Variables
     let studentLocations = StudentArray.sharedInstance
-
-    // Reload table view when view appears/loads
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,7 +54,11 @@ class PinTableViewController: UITableViewController {
 
         let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
 
-        UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
+        if useableURL(thisURL: currentPin.mediaURL) {
+            UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
+        } else {
+            displayError(errorString: "Looks like this isn't a valid URL...")
+        }
 }
     
     func refreshTable() {
