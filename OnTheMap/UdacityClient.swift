@@ -32,7 +32,7 @@ class UdacityClient : NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                completionHandlerForUdacityResult(false, nil, "Failed to connect to server")
+                completionHandlerForUdacityResult(false, nil, error?.localizedDescription)
                 return
             }
             
