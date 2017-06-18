@@ -57,10 +57,10 @@ extension UdacityClient {
                 }
         })
 
-        }
+    }
 
 
-            func getSessionID(parsedResult: AnyObject!, completionHandlerForSessionID: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) ->Void)
+    func getSessionID(parsedResult: AnyObject!, completionHandlerForSessionID: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) ->Void)
     {
         
             
@@ -86,7 +86,7 @@ extension UdacityClient {
             completionHandlerForSessionID(true, self.appDelegate.sessionID, nil)
     }
 
-        func getUserID(parsedResult: AnyObject, completionHandlerForUserID: @escaping (_ success: Bool, _ userID: String?, _ errorString: String?) ->Void)
+    func getUserID(parsedResult: AnyObject, completionHandlerForUserID: @escaping (_ success: Bool, _ userID: String?, _ errorString: String?) ->Void)
     {
         /* GUARD: Is there a userID in our result? */
         if let userData = parsedResult["account"] as? [String: AnyObject] {

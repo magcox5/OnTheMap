@@ -31,28 +31,7 @@ class MapTabBarController:  UITabBarController {
         }
     }
     @IBAction func exitProgram(_ sender: Any) {
-        
-        // MARK:  Logout of the Udacity Parse database
-        let request = NSMutableURLRequest(url: URL(string: UdacityClient.Constants.UdacityURL)!)
-        request.httpMethod = "DELETE"
-        var xsrfCookie: HTTPCookie? = nil
-        let sharedCookieStorage = HTTPCookieStorage.shared
-        for cookie in sharedCookieStorage.cookies! {
-            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
-        }
-        if let xsrfCookie = xsrfCookie {
-            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
-        }
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error…
-                return
-            }
-            let range = Range(uncheckedBounds: (5, data!.count - 5))
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-        }
-        task.resume()
+        UdacityClient.logoutOfDatabase()
 
         // MARK:  Return to the login screen
         self.dismiss(animated: true, completion: nil)
