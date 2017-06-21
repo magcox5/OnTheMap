@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class OnTheMapClient : NSObject {
+class OnTheMapClient {
     
     // MARK: Properties
     var appDelegate: AppDelegate!
