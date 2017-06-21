@@ -110,13 +110,15 @@ class LoginViewController: UIViewController {
         
         func keyboardWillShow(_ notification: Notification) {
             if !keyboardOnScreen {
-                view.frame.origin.y -= keyboardHeight(notification)
+                //view.frame.origin.y -= keyboardHeight(notification)
+                view.frame.origin.y = -keyboardHeight(notification)
             }
         }
         
         func keyboardWillHide(_ notification: Notification) {
             if keyboardOnScreen {
-                view.frame.origin.y += keyboardHeight(notification)
+                //view.frame.origin.y += keyboardHeight(notification)
+                view.frame.origin.y = 0
             }
         }
         
