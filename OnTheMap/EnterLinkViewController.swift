@@ -31,35 +31,12 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     }
     
     @IBAction func saveStudentLocation(_ sender: Any) {
-        // TODO:  Post data to database
-        let request = NSMutableURLRequest(url: NSURL(string: "\(UdacityClient.Constants.ApiScheme)\(UdacityClient.Constants.ApiHost)\(UdacityClient.Constants.ApiPath)\(UdacityClient.Constants.ApiStudent)")! as URL)
-        request.httpMethod = "POST"
-        request.addValue(UdacityClient.Constants.AppID, forHTTPHeaderField: UdacityClient.Constants.httpHeaderAppID)
-        request.addValue(UdacityClient.Constants.ApiKey, forHTTPHeaderField: UdacityClient.Constants.httpHeaderApiKey)
-        
-        request.addValue(UdacityClient.Constants.ContentType, forHTTPHeaderField: UdacityClient.Constants.httpHeaderContentType)
-        
-        userID = "\"\(self.appDelegate.udacityUserID)\""
-        firstName = "\"\(self.appDelegate.udacityFirstName)\""
-        lastName = "\"\(self.appDelegate.udacityLastName)\""
-        mapString = "\"\(mapString)\""
-        var newStudentURL = studentURL!.text!
-        newStudentURL = "\"\(newStudentURL)\""
-        request.httpBody = "{\"uniqueKey\": \(userID),  \"firstName\": \(firstName), \"lastName\": \(lastName),\"mapString\": \(mapString), \"mediaURL\": \(newStudentURL),\"latitude\": \(newStudentLocation!.coordinate.latitude), \"longitude\": \(newStudentLocation!.coordinate.longitude)}".data(using: String.Encoding.utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil {
-                // Handle error…
-                    let nextController = UIAlertController()
-                    let okAction = UIAlertAction(title: "Error: \(String(describing: error))", style: UIAlertActionStyle.default)
-                    nextController.addAction(okAction)
-                    self.present(nextController, animated:  true, completion:nil)
-                return
+        OnTheMapClient.postToDatabase(mapString: mapString, studentURL: studentURL.text!, studentLocation: newStudentLocation!) { (success, errorString) in
+            if success == false {
+                    self.displayError(errorString: errorString!)
             }
         }
-        task.resume()
-
-        // TODO:  Return to Map/Table View
+        // MARK:  Return to Map/Table View
         self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: {})
     }
     
@@ -88,7 +65,6 @@ class EnterLinkViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     }
     
     private func displayStudentLocations() {
-//        var annotation = [MKPointAnnotation].self
         let location = self.newStudentLocation
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.

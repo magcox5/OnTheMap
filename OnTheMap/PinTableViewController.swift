@@ -14,11 +14,12 @@ class PinTableViewController: UITableViewController {
 
     // MARK:  Variables
     let studentLocations = StudentArray.sharedInstance
+    var mapClient: OnTheMapClient!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Get the student locations to populate the map
-        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+        OnTheMapClient.sharedInstance().getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
             { (success, studentLocations, errorString) in
                 if success {
                     // Switch to Main Queue to show table
@@ -54,7 +55,7 @@ class PinTableViewController: UITableViewController {
 
         let currentPin = StudentArray.sharedInstance.thisStudentArray[indexPath.row]
 
-        if useableURL(thisURL: currentPin.mediaURL) {
+        if OnTheMapClient.useableURL(thisURL: currentPin.mediaURL) {
             UIApplication.shared.open(NSURL(string: currentPin.mediaURL)! as URL, options: [:], completionHandler: nil)
         } else {
             displayError(errorString: "Looks like this isn't a valid URL...")
@@ -63,7 +64,7 @@ class PinTableViewController: UITableViewController {
     
     func refreshTable() {
         // Get the student locations to show table
-        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+        OnTheMapClient.sharedInstance().getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
             { (success, studentLocations, errorString) in
                 if success {
                     DispatchQueue.main.async {

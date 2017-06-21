@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         userDidTapView(self)
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            debugLabel.text = "Username or Password Empty."
+            displayError(errorString: "Username or Password Empty.")
         } else {
             setUIEnabled(false)
             attemptingLogin.isHidden = false

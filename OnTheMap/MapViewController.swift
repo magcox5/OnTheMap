@@ -14,6 +14,7 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
     // MARK:  Variables
 
     var studentLocations = StudentArray.sharedInstance
+    var mapClient: OnTheMapClient!
     
     @IBOutlet weak var mapView: MKMapView!
  
@@ -29,7 +30,8 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         super.viewWillDisappear(animated)
 
         // Get the student locations to populate the map
-        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+        
+        OnTheMapClient.sharedInstance().getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
             { (success, studentLocations, errorString) in
                 if success {
                     // Switch to Main Queue to display pins on map
@@ -104,7 +106,8 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             if control == view.rightCalloutAccessoryView {
                 if let toOpen = view.annotation?.subtitle! {
-                    if useableURL(thisURL: toOpen) {
+                    if OnTheMapClient.useableURL(thisURL: toOpen) {
+                    //if (mapClient?.useableURL(thisURL: toOpen))! {
                         if let url = URL(string: toOpen) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
@@ -116,7 +119,7 @@ class MapViewController:  UIViewController, MKMapViewDelegate  {
         }
     
     func refreshMap(){
-        OnTheMap.getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
+        OnTheMapClient.sharedInstance().getStudentLocations(studentLocations: studentLocations, completionHandlerForStudentLocations:
             { (success, studentLocations, errorString) in
                 if success {
                     // Switch to Main Queue to display pins on map
