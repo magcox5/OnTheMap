@@ -65,12 +65,12 @@ class LoginViewController: UIViewController {
             attemptingLogin.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
             attemptingLogin.startAnimating()
             UdacityClient.sharedInstance().authenticateWithViewController(self, userName: usernameTextField.text!, password: passwordTextField.text!, completionHandlerForAuth: { (success, errorString) in
-                performUIUpdatesOnMain {
+                self.performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()
                     } else {
                         self.displayError(errorString: errorString!)
-                        performUIUpdatesOnMain {
+                        self.performUIUpdatesOnMain {
                             self.setUIEnabled(true)
                             self.attemptingLogin.isHidden = true
                         }
@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func completeLogin() {
-        performUIUpdatesOnMain {
+        self.performUIUpdatesOnMain {
             // Clear debugLabel and username/password textfields
             self.debugLabel.text = ""
             self.usernameTextField.text = ""

@@ -35,7 +35,7 @@ class EnterLocationViewController: UIViewController, UITextFieldDelegate {
         
         geoCoder.geocodeAddressString(locationToFind!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
-                performUIUpdatesOnMain {
+                self.performUIUpdatesOnMain {
                     self.findingLocation.isHidden = true
                 }
                 self.displayError(errorString: "Unable to find that location... please try again")
