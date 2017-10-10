@@ -6,9 +6,7 @@
 //  Copyright © 2016 Molly Cox. All rights reserved.
 //
 
-import Foundation
 import UIKit
-
 extension UdacityClient {
     
     // MARK: Constants
